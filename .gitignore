@@ -22,3 +22,5 @@ LIF_model/*.hoc
 LIF_model/*.npy
 LIF_model/.ipynb*
 LIF_model/.DS_Store
+
+*.log
