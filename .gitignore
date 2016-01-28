@@ -1,6 +1,6 @@
 biophys_model/*.csv
 biophys_model/*.pyc
-biophys_model/external_inputs*
+biophys_model/external_inputs_*
 biophys_model/inputs_data*
 biophys_model/output*
 biophys_model/x86_64
@@ -12,7 +12,7 @@ biophys_model/.DS_Store
 
 LIF_model/*.csv
 LIF_model/*.pyc
-LIF_model/external_inputs*
+LIF_model/external_inputs_*
 LIF_model/inputs_data*
 LIF_model/output*
 LIF_model/x86_64
