@@ -1,7 +1,12 @@
 # get cell models
 
 import csv
+import os.path as os_path
+import os.rename as os_rename
 from allensdk.api.queries.biophysical_perisomatic_api import BiophysicalPerisomaticApi
+
+if not os_path("V1_L4_antona.csv"):
+    os_rename("V1_L4.csv", "V1_L4_antona.csv")
 
 bp = BiophysicalPerisomaticApi('http://api.brain-map.org')
 bp.cache_stimulus = False # change to True to download the large stimulus NWB file
@@ -26,7 +31,8 @@ with open("V1_L4_antona.csv") as csvfile, open ("V1_L4.csv", 'w') as writefile:
                 cell_parFileName = cell_parFileName[(cutFileName+1):]
                 neuronal_model_id = [int(s) for s in cell_parFileName.split('_') if s.isdigit()]
                 cell_parFileName = 'neuronal_model/' + cell_parFileName
-                bp.cache_data(neuronal_model_id[0], working_directory='neuronal_model')
+                if not os_path.exists(cell_parFileName):
+                    bp.cache_data(neuronal_model_id[0], working_directory='neuronal_model')
             except ValueError:
                 pass
 
