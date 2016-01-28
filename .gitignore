@@ -8,6 +8,7 @@ biophys_model/*.json
 biophys_model/*.log
 biophys_model/*.hoc
 biophys_model/.DS_Store
+biophys_model/neuronal_model
 
 
 LIF_model/*.csv
@@ -24,3 +25,4 @@ LIF_model/.ipynb*
 LIF_model/.DS_Store
 
 *.log
+neuronal_model
