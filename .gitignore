@@ -9,6 +9,7 @@ biophys_model/*.log
 biophys_model/*.hoc
 biophys_model/.DS_Store
 biophys_model/neuronal_model
+biophys_model/.vscode
 
 
 LIF_model/*.csv
@@ -23,6 +24,7 @@ LIF_model/*.hoc
 LIF_model/*.npy
 LIF_model/.ipynb*
 LIF_model/.DS_Store
+LIF_model/.vscode
 
 LIF_model_nest/*.csv
 LIF_model_nest/*.pyc
@@ -36,6 +38,7 @@ LIF_model_nest/*.hoc
 LIF_model_nest/*.npy
 LIF_model_nest/.ipynb*
 LIF_model_nest/.DS_Store
+LIF_model_nest/.vscode
 
 *.log
 neuronal_model
