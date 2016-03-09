@@ -1,3 +1,6 @@
+*.pyc
+*.log
+
 biophys_model_v0/*.csv
 biophys_model_v0/*.pyc
 biophys_model_v0/external_inputs_*
