@@ -6,6 +6,7 @@
 *.dat
 *.json
 *.mod
+run*
 
 biophys_model_v0/*.csv
 biophys_model_v0/*.pyc
