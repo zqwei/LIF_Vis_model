@@ -1,5 +1,11 @@
 *.pyc
 *.log
+*.swc
+*.zip
+*.csv
+*.dat
+*.json
+*.mod
 
 biophys_model_v0/*.csv
 biophys_model_v0/*.pyc
