@@ -15,3 +15,4 @@ x86_64
 neuronal_model
 *.qsub
 inputs_data*
+LIF_model_nest_v0
