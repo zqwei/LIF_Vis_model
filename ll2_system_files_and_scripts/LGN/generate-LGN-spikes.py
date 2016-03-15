@@ -5,7 +5,8 @@ from LGN_f_rates_and_spikes_functions import *
 #outdir = 'output'
 
 # System 2.
-outdir = 'LGN_spike_trains'
+# outdir = 'LGN_spike_trains'
+outdir = 'LGN_spike_trains/output2'
 
 # Generate spike trains from the firing rates.
 spike_trains_t_window_start = 500.0
