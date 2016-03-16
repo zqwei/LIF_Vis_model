@@ -35,7 +35,7 @@ for syn_data_id in [278]:  # xrange(254, 255):
     # for grating_id in xrange(7, 240, 30):  # [8]: #xrange(8, 240, 30): #grating_id = 8
     #     for trial in xrange(0, 10):  # [8]: #xrange(2, 10): #[8]: #xrange(0, 10):
     #         jobname = '%s_g%d_%d_sd%d' % (system_name, grating_id, trial, syn_data_id)
-    #         vis_stim_path = '/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/output2/grating_%d_LGN_spk.dat' % (grating_id)
+    #         vis_stim_path = 'LGN_spike_trains/output2/grating_%d_LGN_spk.dat' % (grating_id)
     #         vis_t_shift = 0.0
     #         vis_trials_in_file = 10
 
@@ -45,7 +45,7 @@ for syn_data_id in [278]:  # xrange(254, 255):
     # for grating_id in xrange(8, 240, 30):  # [8]: #xrange(8, 240, 30):     #grating_id = 8
     #     for trial in xrange(0, 10):  # [8]: #xrange(2, 10): #[8]: #xrange(0, 10):
     #         jobname = '%s_g%d_%d_sd%d' % (system_name, grating_id, trial, syn_data_id)
-    #         vis_stim_path = '/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/output2/grating_%d_LGN_spk.dat' % (grating_id)
+    #         vis_stim_path = 'LGN_spike_trains/output2/grating_%d_LGN_spk.dat' % (grating_id)
     #         vis_t_shift = 0.0
     #         vis_trials_in_file = 10
 
@@ -55,7 +55,7 @@ for syn_data_id in [278]:  # xrange(254, 255):
     # for grating_id in xrange(9, 240, 30): #[8]: #xrange(8, 240, 30):     #grating_id = 8
     #     for trial in xrange(0, 10): #[8]: #xrange(2, 10): #[8]: #xrange(0, 10):
     #         jobname = '%s_g%d_%d_sd%d' % (system_name, grating_id, trial, syn_data_id)
-    #         vis_stim_path = '/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/output2/grating_%d_LGN_spk.dat' % (grating_id)
+    #         vis_stim_path = 'LGN_spike_trains/output2/grating_%d_LGN_spk.dat' % (grating_id)
     #         vis_t_shift = 0.0
     #         vis_trials_in_file = 10   
 
@@ -66,7 +66,7 @@ for syn_data_id in [278]:  # xrange(254, 255):
     # for stim_name in ['flash_1']:
     #     for trial in xrange(0, 10): #[1]: #xrange(0, 10):
     #         jobname = '%s_%s_%d_sd%d' % (system_name, stim_name, trial, syn_data_id)
-    #         vis_stim_path = '/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/output2/%s_LGN_spk.dat' % (stim_name)
+    #         vis_stim_path = 'LGN_spike_trains/output2/%s_LGN_spk.dat' % (stim_name)
     #         vis_t_shift = 0.0
     #         vis_trials_in_file = 20
 
@@ -76,7 +76,7 @@ for syn_data_id in [278]:  # xrange(254, 255):
     # for stim_name in ['TouchOfEvil_frames_1530_to_1680', 'TouchOfEvil_frames_3600_to_3750', 'TouchOfEvil_frames_5550_to_5700']:
     #     for trial in xrange(0, 10):
     #         jobname = '%s_%s_%d_sd%d' % (system_name, stim_name, trial, syn_data_id)
-    #         vis_stim_path = '/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/output2/%s_LGN_spk.dat' % (stim_name)
+    #         vis_stim_path = 'LGN_spike_trains/output2/%s_LGN_spk.dat' % (stim_name)
     #         vis_t_shift = 0.0
     #         vis_trials_in_file = 20
 
@@ -86,7 +86,7 @@ for syn_data_id in [278]:  # xrange(254, 255):
     # for stim_name in ['img011_BR', 'img019_BT', 'img024_BT', 'img049_BT', 'img057_BR', 'img062_VH', 'img069_VH', 'img071_VH', 'img090_VH', 'img101_VH']:
     #     for trial in xrange(0, 10):
     #         jobname = '%s_%s_%d_sd%d' % (system_name, stim_name, trial, syn_data_id)
-    #         vis_stim_path = '/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/output2/%s_LGN_spk.dat' % (stim_name)
+    #         vis_stim_path = 'LGN_spike_trains/output2/%s_LGN_spk.dat' % (stim_name)
     #         vis_t_shift = 0.0
     #         vis_trials_in_file = 20
 
