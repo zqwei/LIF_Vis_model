@@ -3,9 +3,7 @@ from neuron import h
 h.load_file("stdgui.hoc")
 h.load_file('parlib.hoc')
 h.load_file("import3d.hoc")
-
 h.load_file("cell.hoc")
-
 h.load_file("LIF_pyramid_1.hoc")
 h.load_file("LIF_interneuron_1.hoc")
 
