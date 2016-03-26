@@ -28,11 +28,11 @@ def external_inputs(ext_in_tar_cell_gid, ext_inp_path, tar_ext_inp_map, ext_inp_
   # contains this information for ALL combinations of section labels ('basal', 'apical', etc.) that are
   # found for this cell given the inputs from the file.
   d_f_dict = {}
-  if (target_type not in ['LIF_exc', 'LIF_inh']):
-    all_sec_label_lists = []
-    for src_type_tmp in presyn_type:
-      all_sec_label_lists.append(utils_obj.description.data['syn_data_types'][target_type][src_type_tmp]['sec'])
-    d_f_dict = build_all_d_distributions(all_sec_label_lists, ext_in_tar_cell_gid)
+  # if (target_type not in ['LIF_exc', 'LIF_inh']):
+  #   all_sec_label_lists = []
+  #   for src_type_tmp in presyn_type:
+  #     all_sec_label_lists.append(utils_obj.description.data['syn_data_types'][target_type][src_type_tmp]['sec'])
+  #   d_f_dict = build_all_d_distributions(all_sec_label_lists, ext_in_tar_cell_gid)
   # For each line in the input map file, establish the appropriate number of connections.
   for i_line in xrange(N_syn.size):
     src_obj_list = []
