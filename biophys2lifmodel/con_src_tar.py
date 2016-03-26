@@ -14,6 +14,8 @@ def con_src_tar(src_obj_list, src_type, tar_gid, target, external_flag, utils_ob
   tar_obj_list.append(target.ac)
   if (syn_data_types_tmp['e'] < -55.0) :
     syn_weight_list.append(-1.0 * N_syn * syn_weight)
+  else:
+    syn_weight_list.append(N_syn * syn_weight)
   '''
   # For LIF neurons, use the cell as the target object and assign positive or negative weights for excitatory and inhibitory neurons, respectively.
   if ( target_type in ['LIF_exc', 'LIF_inh'] ):
