@@ -4,33 +4,30 @@ import math
 from utils import Utils
 
 def mkcells(cells_db, utils_obj):
-
   gid_list = range(rank, cell_displ[-1], nhost) 
-
   for gid in gid_list:
     #print rank, gid
     if (int(pc.id()) == 0):
       if ( gid % 5 == 0 ):
         print "Instantiating cells; progress: %.5f percent." % (100.0 * gid / cell_displ[-1])
-
     tmp_type = cells_db.type[gid]
-    tmp_morph = cells_db.morphology[gid]
-    tmp_par_fname = cells_db.cell_par[gid]
-
+    # tmp_morph = cells_db.morphology[gid]
+    # tmp_par_fname = cells_db.cell_par[gid]
     if (tmp_type in ['LIF_exc']):
-      cells[gid] = h.LIF_pyramid_1()
+      cells[gid] = h.LIF_pyramid()
     elif (tmp_type in ['LIF_inh']):
-      cells[gid] = h.LIF_interneuron_1()
+      cells[gid] = h.LIF_interneuron()
     else:
       cell = h.cell()
       cells[gid]=cell
-      utils_obj.generate_morphology(cell, tmp_morph)
-      utils_obj.load_cell_parameters(cell, tmp_par_fname)
+      # utils_obj.generate_morphology(cell, tmp_morph)
+      # utils_obj.load_cell_parameters(cell, tmp_par_fname)
 
     h.register(gid, cells[gid])
 
     # Create numpy arays with sections and distances from the soma for each section (closest and furthest distances).
     # Do this for all cells that have morphologies.
+    '''
     if (tmp_morph != 'None'):
       print tmp_morph
       sec_list = h.SectionList()
@@ -47,11 +44,9 @@ def mkcells(cells_db, utils_obj):
       for sec in cells[gid].apical:
         sec_list.append()
         sec_label.append('apical')
-
       # Use soma as a reference point to measure distances.
       h('access ' + cells[gid].hname() + '.soma[0]')
       h.distance()
-
       tmp_sec = []
       tmp_dist0 = []
       tmp_dist1 = []
@@ -72,7 +67,6 @@ def mkcells(cells_db, utils_obj):
           d_dict[label]['d_distribution'] = np.append( d_dict[label]['d_distribution'], np.zeros(d_add.size) )
         ind = np.intersect1d( np.where(d_dict[label]['d_array'] >= d0), np.where(d_dict[label]['d_array'] <= d1) )
         d_dict[label]['d_distribution'][ind] += 1.0 # We could make it more sophisticated and take into account the amount of overlap between the [d0, d1] interval and the elements of d_array that are on the borders of that interval; but, with delta_d being small enough, this seems unnecessary.
-
       cell_sec[gid] = {}
       cell_sec[gid]['sec'] = np.array(tmp_sec)
       cell_sec[gid]['d0'] = np.array(tmp_dist0)
@@ -84,9 +78,9 @@ def mkcells(cells_db, utils_obj):
         cell_sec[gid]['d_f'][label] = {}
         cell_sec[gid]['d_f'][label]['d_array'] = np.array(d_dict[label]['d_array'])
         cell_sec[gid]['d_f'][label]['d_distribution'] = np.array(d_dict[label]['d_distribution'])
+    '''
 
 
   # Prepare the dictionary for which each member is to become a list of random streams for a specific cell.
   for gid in cells:
     common_rand_stream_dict[gid] = []
-
