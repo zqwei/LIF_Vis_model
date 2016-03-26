@@ -7,7 +7,7 @@ h.load_file("import3d.hoc")
 h.load_file("cell.hoc")
 LIF_files = glob("LIF_*.hoc")
 for file in LIF_files:
-	h.load_file(file)
+	h.load_file(str(file))
 # h.load_file("LIF_pyramid.hoc")
 # h.load_file("LIF_interneuron.hoc")
 

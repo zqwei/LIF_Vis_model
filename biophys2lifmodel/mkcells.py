@@ -1,14 +1,15 @@
 from common import *
-import numpy as np
-import math
-from utils import Utils
+# import numpy as np
+# import math
+# from utils import Utils
+
 
 def mkcells(cells_db, utils_obj):
   gid_list = range(rank, cell_displ[-1], nhost) 
   for gid in gid_list:
     #print rank, gid
     if (int(pc.id()) == 0):
-      if ( gid % 5 == 0 ):
+      if (gid % 5 == 0):
         print "Instantiating cells; progress: %.5f percent." % (100.0 * gid / cell_displ[-1])
     tmp_type = cells_db.type[gid]
     # tmp_morph = cells_db.morphology[gid]
@@ -17,9 +18,19 @@ def mkcells(cells_db, utils_obj):
       cells[gid] = h.LIF_pyramid()
     elif (tmp_type in ['LIF_inh']):
       cells[gid] = h.LIF_interneuron()
-    else:
-      cell = h.cell()
-      cells[gid]=cell
+    elif (tmp_type in ['Scnn1a']):
+      cells[gid] = h.LIF_Scnn1()
+    elif (tmp_type in ['Rorb']):
+      cells[gid] = h.LIF_Rorb()
+    elif (tmp_type in ['Nr5a1']):
+      cells[gid] = h.LIF_Nr5a1() 
+    elif (tmp_type in ['PV1']):
+      cells[gid] = h.LIF_PV1()
+    elif (tmp_type in ['PV2']):
+      cells[gid] = h.LIF_PV2()
+    # else:
+    #   cell = h.cell()
+    #   cells[gid] = cell
       # utils_obj.generate_morphology(cell, tmp_morph)
       # utils_obj.load_cell_parameters(cell, tmp_par_fname)
 
