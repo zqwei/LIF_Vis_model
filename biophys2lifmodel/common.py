@@ -1,11 +1,15 @@
 from neuron import h
+from glob import glob
 
 h.load_file("stdgui.hoc")
 h.load_file('parlib.hoc')
 h.load_file("import3d.hoc")
 h.load_file("cell.hoc")
-h.load_file("LIF_pyramid_1.hoc")
-h.load_file("LIF_interneuron_1.hoc")
+LIF_files = glob("LIF_*.hoc")
+for file in LIF_files:
+	h.load_file(file)
+# h.load_file("LIF_pyramid.hoc")
+# h.load_file("LIF_interneuron.hoc")
 
 pc = h.ParallelContext()
 rank = int(pc.id())
