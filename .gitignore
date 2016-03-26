@@ -16,7 +16,6 @@ task*
 *.dat
 *.json
 *.mod
-*.hoc
 run*
 external_inputs_*
 output*
