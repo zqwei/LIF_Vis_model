@@ -10,10 +10,6 @@ h.load_file("LIF_interneuron_1.hoc")
 pc = h.ParallelContext()
 rank = int(pc.id())
 nhost = int(pc.nhost())
-
-
-#from cell_types import *
-
 cells = {}
 cell_types = []
 cell_displ = [0]
@@ -24,11 +20,9 @@ common_rand_stream_dict = {}
 
 cell_sec = {}
 
+
 def type_index(gid):
   for i, displ in enumerate(cell_displ):
     if gid < displ:
       return i-1
-  return -1 # If nothing found.
-
-
-
+  return -1  # If nothing found.
