@@ -1,4 +1,4 @@
-begintemplate LIF_interneuron_1
+begintemplate LIF_interneuron
 
 public init, connect2target
 
@@ -20,5 +20,5 @@ obfunc connect2target() { localobj nc
 }
 
 
-endtemplate LIF_interneuron_1
+endtemplate LIF_interneuron
 

@@ -1,4 +1,4 @@
-begintemplate LIF_pyramid_1
+begintemplate LIF_Scnn1
 
 public init, connect2target
 
@@ -20,5 +20,5 @@ obfunc connect2target() { localobj nc
 }
 
 
-endtemplate LIF_pyramid_1
+endtemplate LIF_Scnn1
 
