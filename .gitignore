@@ -14,7 +14,7 @@ task*
 *.zip
 *.csv
 *.dat
-*.json
+config*
 *.mod
 run*
 external_inputs_*
