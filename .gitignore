@@ -1,4 +1,9 @@
 # task list
+build
+cell_models
+LGN_spike_trains
+tw_data
+modfiles
 task*
 *.pkl
 *.txt
