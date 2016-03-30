@@ -1,4 +1,5 @@
 import json
+from glob import glob
 # import os
 from os import path, makedirs
 
@@ -16,39 +17,42 @@ use_vis_stim_path_only = 'no'
 vis_map = 'build/120cells_inputs_from_LGN.csv'
 tw_map = 'tw_data/120cells_tw_build/mapping_tw_src.csv'
 
-for syn_data_id in [278]:  # xrange(254, 255):
-    syn_data_file = 'syn_data_%d.json' % (syn_data_id)
-
+# for syn_data_id in [278]:  # xrange(254, 255):
+#     syn_data_file = 'syn_data_%d.json' % (syn_data_id)
+for syn_data_file in glob('syn_data_*.json'):
+    syn_data_id = path.splitext(syn_data_file)[0]
+    syn_data_id = syn_data_id[9:]
     # tstop = 500.0
     # tw_trial_id = 0
     # stim_name = 'spont'
     # for grating_id in [8]:  # this is just for a indent
     #     for trial in [1]:
-    #         jobname = '%s_%s_%d_sd%d' % (system_name, stim_name, trial, syn_data_id)
+    #         jobname = '%s_%s_%d_sd%s' % (system_name, stim_name, trial, syn_data_id)
     #         vis_stim_path = 'LGN_spike_trains/spont_LGN_spk.dat'
     #         vis_t_shift = 0.0
     #         vis_trials_in_file = 50
 
-    # tstop = 500.0
-    # tw_trial_id = 1
-    # for grating_id in [8]:
-    #     for trial in [8]:
-    #         jobname = '%s_g%d_%d_sd%d' % (
-    #             system_name, grating_id, trial, syn_data_id)
-    #         vis_stim_path = 'LGN_spike_trains/grating_%d_LGN_spk.dat' % (
-    #             grating_id)
-    #         vis_t_shift = -500.0
-    #         vis_trials_in_file = 10
-
     tstop = 500.0
-    tw_trial_id = 2
-    stim_name = 'flash_1'
-    for grating_id in [8]:  # this is just for a indent
-        for trial in [5]:
-            jobname = '%s_%s_%d_sd%d' % (system_name, stim_name, trial, syn_data_id)
-            vis_stim_path = 'LGN_spike_trains/%s_LGN_spk.dat' % (stim_name)
-            vis_t_shift = -800.0
-            vis_trials_in_file = 20
+    tw_trial_id = 1
+    for grating_id in [8]:
+        for trial in [8]:
+            jobname = '%s_g%d_%d_sd%s' % (
+                system_name, grating_id, trial, syn_data_id)
+            vis_stim_path = 'LGN_spike_trains/grating_%d_LGN_spk.dat' % (
+                grating_id)
+            vis_t_shift = -500.0
+            vis_trials_in_file = 10
+
+    # tstop = 500.0
+    # tw_trial_id = 2
+    # stim_name = 'flash_1'
+    # for grating_id in [8]:  # this is just for a indent
+    #     for trial in [5]:
+    #         jobname = '%s_%s_%d_sd%s' % (system_name, stim_name, trial, syn_data_id)
+    #         # change syn_data_id to syn_data_file
+    #         vis_stim_path = 'LGN_spike_trains/%s_LGN_spk.dat' % (stim_name)
+    #         vis_t_shift = -800.0
+    #         vis_trials_in_file = 20
 
             workdir = 'output_' + jobname
             startfile = 'run_' + jobname + '.py'
