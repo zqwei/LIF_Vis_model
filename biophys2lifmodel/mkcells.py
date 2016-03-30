@@ -19,7 +19,7 @@ def mkcells(cells_db, utils_obj):
     elif (tmp_type in ['LIF_inh']):
       cells[gid] = h.LIF_interneuron()
     elif (tmp_type in ['Scnn1a']):
-      cells[gid] = h.LIF_Scnn1()
+      cells[gid] = h.LIF_Scnn1a()
     elif (tmp_type in ['Rorb']):
       cells[gid] = h.LIF_Rorb()
     elif (tmp_type in ['Nr5a1']):
