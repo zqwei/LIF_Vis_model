@@ -1,4 +1,5 @@
 # task list
+biophys_model_v1/*.hoc
 build
 cell_models
 LGN_spike_trains
