@@ -11,8 +11,8 @@ if len(glob('LIF_*_bak.hoc')) == 0:
 		if file_name not in ['LIF_pyramid.hoc', 'LIF_interneuron.hoc']:
 			input_file = open(file_name, 'r')
 			cell_type = splitext(file_name)[0][4:]
-			output_file = open(file_name+'bak', 'w')
-			index_array = LIFModelDF['type']==cell_type
+			output_file = open(file_name+'ss', 'w')
+			index_array = LIFModelDF['type'] == cell_type
 			for line in input_file:
 				if 'ac.tau' in line:
 					outputString = ''
@@ -34,5 +34,5 @@ if len(glob('LIF_*_bak.hoc')) == 0:
 					output_file.write(line + '\n')
 			input_file.close()
 			output_file.close()
-			system('mv ' + file_name + ' LIF_' + cell_type + '_bak.hoc')
-			system('mv ' + file_name+'bak ' + file_name)
+			system('mv ' + file_name + ' LIF_' + cell_type + '.hoc.bak')
+			system('mv ' + file_name+'ss ' + file_name)
