@@ -1,5 +1,6 @@
 import json
 from os import path, makedirs
+from glob import glob
 
 Nnodes = 5
 ppn = 24
@@ -15,8 +16,9 @@ use_vis_stim_path_only = 'no'
 vis_map = 'build/ll2_inputs_from_LGN.csv'
 tw_map = 'tw_data/ll2_tw_build/mapping_2_tw_src.csv'
 
-for syn_data_id in [278]:  # xrange(254, 255):
-    syn_data_file = 'syn_data_%d.json' % (syn_data_id)
+for syn_data_file in glob('syn_data_*.json'):
+    syn_data_id = path.splitext(syn_data_file)[0]
+    syn_data_id = syn_data_id[9:]
 
     # task_1
     # tstop = 1000.0  # 500.0
