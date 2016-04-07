@@ -9,7 +9,7 @@ def syn_weight_amp(amp_PV1=1.6, amp_PV2=1.6, syn_file='syn_z003'):
     with open('syn_data_z001.jsonbak') as data_file:
         data = json.load(data_file)
         data["PV1"]["LGN_exc"]["w"] = amp_PV1 * data["PV1"]["LGN_exc"]["w"]
-        data["PV2"]["LGN_exc"]["w"] = amp_PV1 * data["PV2"]["LGN_exc"]["w"]
+        data["PV2"]["LGN_exc"]["w"] = amp_PV2 * data["PV2"]["LGN_exc"]["w"]
         with open(syn_file+'.json', 'w') as outfile:  # rewrite the syn file
             json.dump(data, outfile, indent=4)
     with open('config_ll2_g8_8_sd278_test500ms_LGN_only_no_con.json') as data_file:  # rewrite the config file
