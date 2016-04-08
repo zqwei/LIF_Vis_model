@@ -7,6 +7,8 @@ percent_diff_cell = np.zeros([5, 6])
 # amp_syn = np.ones([5, 3]) # max value, # min value # update value
 default_amp_syn = np.ones([5, 3])
 default_amp_syn[:, 0] = 0.01
+per_other_thres = 95.
+np_ratio = 2.
 
 
 def compute_estimation_error(n_file_dir, ref_file, amp_syn=default_amp_syn, amp_syn_output='new_syn_weight', ncol=2):
@@ -29,14 +31,14 @@ def compute_estimation_error(n_file_dir, ref_file, amp_syn=default_amp_syn, amp_
 			min_amp = amp_syn[cell_group, 0]
 			max_amp = amp_syn[cell_group, 1]
 			new_amp = amp_syn[cell_group, 2]
-			if per_other < 95 and max_amp-min_amp > max_amp*0.01:
-				if per_pos == 0. or per_neg/per_pos > 3:
+			if per_other < per_other_thres and max_amp-min_amp > max_amp*0.01:
+				if per_pos == 0. or per_neg/per_pos > np_ratio:
 					min_amp = new_amp
-					max_amp = max_amp * 2.
+					# max_amp = max_amp * 1.1
 					new_amp = (min_amp+max_amp)/2.
-				elif per_neg == 0. or per_pos/per_neg > 3:
+				elif per_neg == 0. or per_pos/per_neg > np_ratio:
 					max_amp = new_amp
-					min_amp = min_amp/2.
+					# min_amp = min_amp * 0.9
 					new_amp = (min_amp+max_amp)/2.
 			output_file.write('%.2f, %.2f, %.2f\n' % (min_amp, max_amp, new_amp))
 			amp_syn[cell_group, 0] = min_amp
