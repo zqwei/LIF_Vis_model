@@ -27,6 +27,7 @@ inputs_data*
 LIF_model_nest_v0
 *.bak
 *.json
+*.npy
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
