@@ -42,8 +42,4 @@ def compute_estimation_error(n_file_dir, ref_file, amp_syn=default_amp_syn, amp_
 			amp_syn[cell_group, 0] = min_amp
 			amp_syn[cell_group, 1] = max_amp
 			amp_syn[cell_group, 2] = new_amp
-	np.save(amp_syn_output, amp_syn)	
-
-
-if __name__ == '__main__':
-	compute_estimation_error('.', 'ref_tot_f_rate.dat')
+	np.save(amp_syn_output, amp_syn)
