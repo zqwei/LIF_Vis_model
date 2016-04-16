@@ -29,8 +29,8 @@ def main(idx_syn):
 		E_curr = pdSyn["E_curr"]
 		# print((E_old < E_curr).sum())
 		# print((abs(pdOldWeight-pdNewWeight) > pdOldWeight*1e-5).sum())
-		if (E_old < E_curr).sum() > 0 or (abs(pdOldWeight-pdNewWeight) > pdOldWeight*1e-5).sum() > 0:
-			with open('run_compile.bat', 'w') as output_file:
+		with open('run_compile.bat', 'w') as output_file:
+			if (E_old < E_curr).sum() > 0 or (abs(pdOldWeight-pdNewWeight) > pdOldWeight*1e-5).sum() > 0:
 				output_folder = 'output_' + f_name + str(idx_syn)
 				if not exists(output_folder):
 					makedirs(output_folder)
