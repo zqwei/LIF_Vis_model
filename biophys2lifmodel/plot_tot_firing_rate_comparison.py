@@ -2,13 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from math import floor
 from numpy.fft import rfft, irfft
-from glob import glob
+from os.path import exists
 
 tstop = 500
 f_name = 'll2_g8_8_test%dms_LGN_only_no_con_lif_syn_z' % (tstop)
 num_cell_type = [0, 3700, 7000, 8500, 9300, 10000, 39750, 45000]
 cell_type = ['Scnn1a', 'Rorb', 'Nr5a1', 'PV1', 'PV2']
 ref_file = 'output_ll2_g8_8_test%dms_LGN_only_no_con_syn_z002/tot_f_rate.dat' % (tstop)
+color_cell_type = ['aqua', 'darkred', 'blue', 'green', 'm', 'black', 'gray']
 
 
 def running_mean(x, N):
@@ -41,7 +42,9 @@ def plot_tot_firing_rate_comparison(n_file_dir, ref_file=ref_file, N=100, ncol=2
     smoothed_ref_data = compute_mean(cell_id, ref_firing_rate, N=N)
     smoothed_data = compute_mean(cell_id, firing_rate, N=N)
     plt.plot(cell_id, smoothed_ref_data, '--k')
-    plt.plot(cell_id, smoothed_data, '-r', alpha=0.5)
+    for cell_group in xrange(len(cell_type)):
+        group = np.logical_and(cell_id >= num_cell_type[cell_group], cell_id < num_cell_type[cell_group+1])
+        plt.plot(cell_id[group], smoothed_data[group], '-', color=color_cell_type[cell_group], alpha=0.5)
     plt.ylim(bottom=0.0)
     plt.xlabel('gid')
     plt.ylabel('Firing rate (Hz)')
@@ -52,6 +55,10 @@ def plot_tot_firing_rate_comparison(n_file_dir, ref_file=ref_file, N=100, ncol=2
     plt.close('all')
 
 if __name__ == '__main__':
-    # for nfile in xrange(101, 109):
-    nfile = 110
-    plot_tot_firing_rate_comparison('output_ll2_g8_8_test500ms_LGN_only_no_con_lif_syn_z'+str(nfile))
+    for nfile in xrange(100, 999):
+        out_png = 'output_ll2_g8_8_test500ms_LGN_only_no_con_lif_syn_z'+str(nfile)+'/comparison_plot.png'
+        out_rate = 'output_ll2_g8_8_test500ms_LGN_only_no_con_lif_syn_z'+str(nfile)+'/tot_f_rate.dat'
+        if (not exists(out_png)) and (exists(out_rate)):
+            plot_tot_firing_rate_comparison('output_ll2_g8_8_test500ms_LGN_only_no_con_lif_syn_z'+str(nfile))
+    # nfile = 100
+    # plot_tot_firing_rate_comparison('output_ll2_g8_8_test500ms_LGN_only_no_con_lif_syn_z'+str(nfile))
