@@ -68,8 +68,12 @@ def compute_estimation_error(n_file_dir, m_file_dir, ref_file, ncol=2):
         group = np.logical_and(cell_id >= num_cell_type[cell_group], cell_id < num_cell_type[cell_group + 1])
         # compute estimation error
         E_curr = np.mean(diff_rate[group]**2)  # mean
-        f_w_grad = f_grad[group] * w_grad[cell_group]
-        grad_curr = np.mean(diff_rate[group] * f_w_grad)  # mean
+        print(w_grad[cell_group] != 0)
+        if w_grad[cell_group] != 0:
+            f_w_grad = f_grad[group] * w_grad[cell_group]
+            grad_curr = np.mean(diff_rate[group] * f_w_grad)  # mean
+        else:
+            grad_curr = 0.
         E_old = pdUpdateOld['E_old'][cell_group]
         #
         # decide if E_curr < E_old
