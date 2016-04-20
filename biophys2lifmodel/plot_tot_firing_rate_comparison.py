@@ -2,7 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from math import floor
 from numpy.fft import rfft, irfft
-from os.path import exists
+# from os.path import exists
+from sys import argv
 
 tstop = 500
 f_name = 'll2_g8_8_test%dms_LGN_only_no_con_lif_syn_z' % (tstop)
@@ -54,11 +55,11 @@ def plot_tot_firing_rate_comparison(n_file_dir, ref_file=ref_file, N=100, ncol=2
     # plt.show()
     plt.close('all')
 
+
+def main(idx_syn):
+    plot_tot_firing_rate_comparison('output_ll2_g8_8_test500ms_LGN_only_no_con_lif_syn_z' + str(idx_syn))
+
+
 if __name__ == '__main__':
-    for nfile in xrange(100, 999):
-        out_png = 'output_ll2_g8_8_test500ms_LGN_only_no_con_lif_syn_z'+str(nfile)+'/comparison_plot.png'
-        out_rate = 'output_ll2_g8_8_test500ms_LGN_only_no_con_lif_syn_z'+str(nfile)+'/tot_f_rate.dat'
-        if (not exists(out_png)) and (exists(out_rate)):
-            plot_tot_firing_rate_comparison('output_ll2_g8_8_test500ms_LGN_only_no_con_lif_syn_z'+str(nfile))
-    # nfile = 100
-    # plot_tot_firing_rate_comparison('output_ll2_g8_8_test500ms_LGN_only_no_con_lif_syn_z'+str(nfile))
+    main(int(argv[1]))
+
