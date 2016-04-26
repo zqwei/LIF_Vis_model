@@ -10,7 +10,7 @@ import pandas as pd
 num_core = 30
 tstop = 500
 f_name = 'll2_g8_8_test%dms_LGN_only_no_con_lif_syn_z' % (tstop)
-ref_file = 'output_ll2_g8_8_test%dms_LGN_only_no_con_syn_z002/tot_f_rate.dat' % (tstop)
+ref_file = 'results/test500ms_LGN_only_no_con_ref/output_ll2_g8_8_test%dms_LGN_only_no_con_syn_z002/tot_f_rate.dat' % (tstop)
 
 
 def main(idx_syn):
