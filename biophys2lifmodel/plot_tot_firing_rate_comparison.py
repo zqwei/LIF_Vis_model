@@ -6,10 +6,14 @@ from numpy.fft import rfft, irfft
 from sys import argv
 
 tstop = 500
-f_name = 'll2_g8_8_test%dms_LGN_only_no_con_lif_syn_z' % (tstop)
 num_cell_type = [0, 3700, 7000, 8500, 9300, 10000, 39750, 45000]
 cell_type = ['Scnn1a', 'Rorb', 'Nr5a1', 'PV1', 'PV2']
-ref_file = 'output_ll2_g8_8_test%dms_LGN_only_no_con_syn_z002/tot_f_rate.dat' % (tstop)
+# LGN only ref file
+# ref_file = 'results/test500ms_LGN_only_no_con_ref/output_ll2_g8_8_test%dms_LGN_only_no_con_syn_z002/tot_f_rate.dat' % (tstop)
+# TW ref file
+# ref_file = 'results/test500ms_no_con_ref/output_ll2_g8_8_test500ms_no_con_syn_z001/tot_f_rate.dat'
+# Rec ref file
+ref_file = 'results/test500ms_all_ref/output_ll2_g8_8_sd278test500ms_syn_z001/tot_f_rate.dat'
 color_cell_type = ['aqua', 'darkred', 'blue', 'green', 'm', 'black', 'gray']
 
 
@@ -52,14 +56,19 @@ def plot_tot_firing_rate_comparison(n_file_dir, ref_file=ref_file, N=100, ncol=2
     plt.title('Running average of the firing rate, N = %d' % (N))
     plt.savefig(n_file_dir+'/comparison_plot.png', dpi=150)
     plt.savefig(n_file_dir+'comparison_plot.png', dpi=150)
+    # plt.savefig('comparison_plot.png', dpi=150)
     # plt.show()
     plt.close('all')
 
 
 def main(idx_syn):
-    plot_tot_firing_rate_comparison('output_ll2_g8_8_test500ms_LGN_only_no_con_lif_syn_z' + str(idx_syn))
+    # LGN only
+    # plot_tot_firing_rate_comparison('output_ll2_g8_8_test500ms_LGN_only_no_con_lif_syn_z%03d' % (idx_syn))
+    # TW
+    # plot_tot_firing_rate_comparison('output_ll2_g8_8_test500ms_no_con_lif_syn_z%03d' % (idx_syn))
+    # INH
+    plot_tot_firing_rate_comparison('output_ll2_g8_8_test500ms_inh_lif_syn_z%03d' % (idx_syn))
 
 
 if __name__ == '__main__':
     main(int(argv[1]))
-
