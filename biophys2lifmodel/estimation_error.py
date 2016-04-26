@@ -68,9 +68,9 @@ def compute_estimation_error(n_file_dir, m_file_dir, ref_file, ncol=2):
         group = np.logical_and(cell_id >= num_cell_type[cell_group], cell_id < num_cell_type[cell_group + 1])
         # compute estimation error
         E_curr = np.mean(diff_rate[group]**2)  # mean
-        print(w_grad[cell_group] != 0.)
-        if w_grad[cell_group] != 0.:
-            f_w_grad = f_grad[group] * w_grad[cell_group]
+        # print(w_grad[cell_group] != 0. and pdUpdateNew['dw']!=0.)
+        if w_grad[cell_group] != 0. and pdUpdateNew['dw'][cell_group] != 0.:
+            f_w_grad = f_grad[group] / w_grad[cell_group]
             grad_curr = np.mean(diff_rate[group] * f_w_grad)  # mean
         else:
             grad_curr = 0.
@@ -86,10 +86,13 @@ def compute_estimation_error(n_file_dir, m_file_dir, ref_file, ncol=2):
         # update Ecurr, grad_curr, w_curr, dw
         pdUpdateNew['E_curr'][cell_group] = E_curr
         pdUpdateNew['grad_curr'][cell_group] = grad_curr
-        dw = pdUpdateNew['dw'][cell_group] / 2.
+        dw = pdUpdateNew['dw'][cell_group] * 0.5  # / 2.
         pdUpdateNew['dw'][cell_group] = dw
         w_old = pdUpdateNew['w_old'][cell_group]
-        grad_old = pdUpdateNew['grad_old'][cell_group]
-        w_curr = w_old - grad_old * dw
+        # grad_old = pdUpdateNew['grad_old'][cell_group]
+        # w_curr = w_old - grad_old * dw
+        print(dw)
+        w_curr = pdUpdateNew['w_curr'][cell_group]
+        w_curr = w_curr - grad_curr * dw
         pdUpdateNew['w_curr'][cell_group] = w_curr
     pdUpdateNew.to_csv(n_file_dir + "/cell_update_stats_new.dat", mode='w', index=False)
