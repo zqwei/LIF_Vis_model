@@ -1,0 +1,440 @@
+{
+    "PV1": {
+        "tw_exc": {
+            "tau2": 0.5, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 0.1, 
+            "sec": [
+                "somatic", 
+                "basal"
+            ], 
+            "w": 0.22, 
+            "dcutoff": [
+                0.0, 
+                1e+20
+            ]
+        }, 
+        "inh": {
+            "tau2": 8.0, 
+            "e": -70.0, 
+            "delay": 2.0, 
+            "tau1": 0.2, 
+            "sec": [
+                "somatic", 
+                "basal"
+            ], 
+            "w": 0.02, 
+            "dcutoff": [
+                0.0, 
+                1e+20
+            ]
+        }, 
+        "exc": {
+            "tau2": 0.5, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 0.1, 
+            "sec": [
+                "somatic", 
+                "basal"
+            ], 
+            "w": 0.034999999999999996, 
+            "dcutoff": [
+                0.0, 
+                1e+20
+            ]
+        }, 
+        "LGN_exc": {
+            "tau2": 0.5, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 0.1, 
+            "sec": [
+                "somatic", 
+                "basal"
+            ], 
+            "w": 0.0021548261735800001, 
+            "dcutoff": [
+                0.0, 
+                1e+20
+            ]
+        }
+    }, 
+    "PV2": {
+        "tw_exc": {
+            "tau2": 0.5, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 0.1, 
+            "sec": [
+                "somatic", 
+                "basal"
+            ], 
+            "w": 0.13, 
+            "dcutoff": [
+                0.0, 
+                1e+20
+            ]
+        }, 
+        "inh": {
+            "tau2": 8.0, 
+            "e": -70.0, 
+            "delay": 2.0, 
+            "tau1": 0.2, 
+            "sec": [
+                "somatic", 
+                "basal"
+            ], 
+            "w": 0.02, 
+            "dcutoff": [
+                0.0, 
+                1e+20
+            ]
+        }, 
+        "exc": {
+            "tau2": 0.5, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 0.1, 
+            "sec": [
+                "somatic", 
+                "basal"
+            ], 
+            "w": 0.027, 
+            "dcutoff": [
+                0.0, 
+                1e+20
+            ]
+        }, 
+        "LGN_exc": {
+            "tau2": 0.5, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 0.1, 
+            "sec": [
+                "somatic", 
+                "basal"
+            ], 
+            "w": 0.0038871958986000004, 
+            "dcutoff": [
+                0.0, 
+                1e+20
+            ]
+        }
+    }, 
+    "LIF_inh": {
+        "tw_exc": {
+            "tau2": 0.5, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 0.1, 
+            "sec": [
+                "somatic", 
+                "basal"
+            ], 
+            "w": 0.05, 
+            "dcutoff": [
+                0.0, 
+                1e+20
+            ]
+        }, 
+        "inh": {
+            "tau2": 8.0, 
+            "e": -70.0, 
+            "delay": 2.0, 
+            "tau1": 0.2, 
+            "sec": [
+                "somatic", 
+                "basal"
+            ], 
+            "w": 0.00225, 
+            "dcutoff": [
+                0.0, 
+                1e+20
+            ]
+        }, 
+        "exc": {
+            "tau2": 0.5, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 0.1, 
+            "sec": [
+                "somatic", 
+                "basal"
+            ], 
+            "w": 0.0043, 
+            "dcutoff": [
+                0.0, 
+                1e+20
+            ]
+        }, 
+        "LGN_exc": {
+            "tau2": 0.5, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 0.1, 
+            "sec": [
+                "somatic", 
+                "basal"
+            ], 
+            "w": 0.002, 
+            "dcutoff": [
+                0.0, 
+                1e+20
+            ]
+        }
+    }, 
+    "LIF_exc": {
+        "tw_exc": {
+            "tau2": 3.0, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 1.0, 
+            "sec": [
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.015, 
+            "dcutoff": [
+                30.0, 
+                150.0
+            ]
+        }, 
+        "inh": {
+            "tau2": 15.0, 
+            "e": -70.0, 
+            "delay": 2.0, 
+            "tau1": 2.7, 
+            "sec": [
+                "somatic", 
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.009, 
+            "dcutoff": [
+                0.0, 
+                50.0
+            ]
+        }, 
+        "exc": {
+            "tau2": 3.0, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 1.0, 
+            "sec": [
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.0019, 
+            "dcutoff": [
+                30.0, 
+                150.0
+            ]
+        }, 
+        "LGN_exc": {
+            "tau2": 3.0, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 1.0, 
+            "sec": [
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.0045, 
+            "dcutoff": [
+                0.0, 
+                150.0
+            ]
+        }
+    }, 
+    "Scnn1a": {
+        "tw_exc": {
+            "tau2": 3.0, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 1.0, 
+            "sec": [
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.015, 
+            "dcutoff": [
+                30.0, 
+                150.0
+            ]
+        }, 
+        "inh": {
+            "tau2": 15, 
+            "e": -70.0, 
+            "delay": 2.0, 
+            "tau1": 2.7, 
+            "sec": [
+                "somatic", 
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.018000000000000002, 
+            "dcutoff": [
+                0.0, 
+                50.0
+            ]
+        }, 
+        "exc": {
+            "tau2": 3.0, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 1.0, 
+            "sec": [
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.0063999999999999994, 
+            "dcutoff": [
+                30.0, 
+                150.0
+            ]
+        }, 
+        "LGN_exc": {
+            "tau2": 3.0, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 1.0, 
+            "sec": [
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.0033048658580919999, 
+            "dcutoff": [
+                0.0, 
+                150.0
+            ]
+        }
+    }, 
+    "Rorb": {
+        "tw_exc": {
+            "tau2": 3.0, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 1.0, 
+            "sec": [
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.015, 
+            "dcutoff": [
+                30.0, 
+                150.0
+            ]
+        }, 
+        "inh": {
+            "tau2": 15, 
+            "e": -70.0, 
+            "delay": 2.0, 
+            "tau1": 2.7, 
+            "sec": [
+                "somatic", 
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.018000000000000002, 
+            "dcutoff": [
+                0.0, 
+                50.0
+            ]
+        }, 
+        "exc": {
+            "tau2": 3.0, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 1.0, 
+            "sec": [
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.0055000000000000005, 
+            "dcutoff": [
+                30.0, 
+                150.0
+            ]
+        }, 
+        "LGN_exc": {
+            "tau2": 3.0, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 1.0, 
+            "sec": [
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.0066200909148, 
+            "dcutoff": [
+                0.0, 
+                150.0
+            ]
+        }
+    }, 
+    "Nr5a1": {
+        "tw_exc": {
+            "tau2": 3.0, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 1.0, 
+            "sec": [
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.019, 
+            "dcutoff": [
+                30.0, 
+                150.0
+            ]
+        }, 
+        "inh": {
+            "tau2": 15, 
+            "e": -70.0, 
+            "delay": 2.0, 
+            "tau1": 2.7, 
+            "sec": [
+                "somatic", 
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.018000000000000002, 
+            "dcutoff": [
+                0.0, 
+                50.0
+            ]
+        }, 
+        "exc": {
+            "tau2": 3.0, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 1.0, 
+            "sec": [
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.0072, 
+            "dcutoff": [
+                30.0, 
+                150.0
+            ]
+        }, 
+        "LGN_exc": {
+            "tau2": 3.0, 
+            "e": 0.0, 
+            "delay": 2.0, 
+            "tau1": 1.0, 
+            "sec": [
+                "basal", 
+                "apical"
+            ], 
+            "w": 0.0051328507009499999, 
+            "dcutoff": [
+                0.0, 
+                150.0
+            ]
+        }
+    }
+}
