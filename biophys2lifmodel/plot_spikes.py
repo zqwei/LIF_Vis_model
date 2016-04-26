@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from glob import glob
 
-output_list = glob('output_*')
+output_list = glob('output_*z111')
 
 num_cell_type = [0, 3700, 7000, 8500, 9300, 10000, 39750, 45000]
 color_cell_type = ['k', 'darkred', 'blue', 'green', 'm', 'aqua', 'gray']
@@ -15,13 +15,23 @@ for base_dir in output_list:
     series = np.genfromtxt(full_f_name, delimiter=' ')
     group  = np.zeros(len(series)).astype('int8')
     for cell_idx in xrange(len(color_cell_type)):
+<<<<<<< HEAD
         group[np.logical_and(series[:,1]>=num_cell_type[cell_idx], series[:,1]<num_cell_type[cell_idx+1])] = cell_idx
     group_color = color_cell_type[group]
     plt.scatter(series[:, 0], series[:, 1], s=1, color=group_color) 
+=======
+        group[np.logical_and(series[:,1] >= num_cell_type[cell_idx], series[:,1] < num_cell_type[cell_idx+1])] = cell_idx
+    group_color = color_cell_type[group]
+    plt.scatter(series[:, 0], series[:, 1], s=1, color=group_color)
+>>>>>>> 36d2bf87bd243ce02b9d10ad23627274a7b33b7f
     plt.title('%s' % (base_dir))
     plt.ylim(0, 10000)
     # plt.ylim(0, series[:, 1].max())
     plt.xlim(0, series[:, 0].max())
     plt.xlabel('Time (ms)')
     plt.ylabel('Neuron index')
+<<<<<<< HEAD
     plt.show()
+=======
+    plt.show()
+>>>>>>> 36d2bf87bd243ce02b9d10ad23627274a7b33b7f

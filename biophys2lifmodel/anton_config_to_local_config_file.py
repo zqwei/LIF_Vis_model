@@ -1,9 +1,15 @@
 from glob import glob
 from os.path import splitext, exists
 from os import makedirs
+<<<<<<< HEAD
 from os import system
 import json
 import numpy as np
+=======
+# from os import system
+import json
+# import numpy as np
+>>>>>>> 36d2bf87bd243ce02b9d10ad23627274a7b33b7f
 
 if len(glob('anton_config_test/config_*.json')) > 0:
     for file_name in glob('anton_config_test/config_*.json'):
@@ -18,6 +24,7 @@ if len(glob('anton_config_test/config_*.json')) > 0:
                 data["syn_data_file"] = "syn_data_278_lif_amp_100.json"
                 old_str = [s for s in data["ext_inputs"].keys() if '/data/mat/antona' in s][0]
                 new_str = old_str.replace('/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/', '', 2)
+<<<<<<< HEAD
                 data["ext_inputs"][new_str] = data["ext_inputs"][old_str] 
                 data["ext_inputs"].pop(old_str)
                 with open(new_file_name + '_lif_amp_100.json', 'w') as output_file:
@@ -25,3 +32,11 @@ if len(glob('anton_config_test/config_*.json')) > 0:
                 with open('run' + new_file_name[6:]  + '_lif_amp_100.py', 'w' ) as run_file:
                     run_file.write("import start as start\n\nstart.run_simulation('%s')\n\n"%(new_file_name + '_lif_amp_100.json'))
 
+=======
+                data["ext_inputs"][new_str] = data["ext_inputs"][old_str]
+                data["ext_inputs"].pop(old_str)
+                with open(new_file_name + '_lif_amp_100.json', 'w') as output_file:
+                    json.dump(data, output_file, sort_keys=True, indent=4)
+                with open('run' + new_file_name[6:] + '_lif_amp_100.py', 'w') as run_file:
+                    run_file.write("import start as start\n\nstart.run_simulation('%s')\n\n" % (new_file_name + '_lif_amp_100.json'))
+>>>>>>> 36d2bf87bd243ce02b9d10ad23627274a7b33b7f
