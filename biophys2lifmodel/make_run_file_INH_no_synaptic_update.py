@@ -1,11 +1,11 @@
 # import numpy as np
-from syn_weight_amp_INH import syn_weight_amp
+from syn_weight_same_amp_SRN_INH import syn_weight_amp
 from sys import argv
 from os import makedirs
 from os.path import exists
 # from plot_tot_firing_rate_comparison import plot_tot_firing_rate_comparison
 num_core = 30
-tstop = 500
+tstop = 3000
 f_name = 'll2_g8_8_test%dms_inh_lif_syn_z' % (tstop)
 ref_file = 'results/test500ms_all_ref/output_ll2_g8_8_sd278test500ms_syn_z001/tot_f_rate.dat'
 
@@ -22,3 +22,4 @@ def main(idx_syn):
 
 if __name__ == '__main__':
     main(int(argv[1]))
+    # main(int(176))
