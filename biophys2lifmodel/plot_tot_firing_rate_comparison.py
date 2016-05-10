@@ -5,7 +5,7 @@ from numpy.fft import rfft, irfft
 # from os.path import exists
 from sys import argv
 
-tstop = 3000
+tstop = 500
 num_cell_type = [0, 3700, 7000, 8500, 9300, 10000, 39750, 45000]
 cell_type = ['Scnn1a', 'Rorb', 'Nr5a1', 'PV1', 'PV2']
 # LGN only ref file
