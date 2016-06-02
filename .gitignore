@@ -5,6 +5,7 @@ cell_models
 LGN_spike_trains
 tw_data
 modfiles
+bio2lif_model
 task*
 *.pkl
 *.txt
