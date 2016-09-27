@@ -29,6 +29,7 @@ LIF_model_nest_v0
 *.bak
 *.json
 *.npy
+backups
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
