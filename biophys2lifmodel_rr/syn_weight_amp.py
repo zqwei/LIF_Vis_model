@@ -38,7 +38,7 @@ def syn_weight_amp(output_folder, syn_file=''):
         with open(new_config_file, 'w') as config_file:
             json.dump(data, config_file, indent=4)
         with open('run_' + f_name + syn_file + '.py', 'w') as run_file:
-            run_file.write("import start as start\n\nstart.run_simulation('%s')\n\n" % (new_config_file))
+            run_file.write("import start0 as start\n\nstart.run_simulation('%s')\n\n" % (new_config_file))
 
 
 if __name__ == '__main__':
