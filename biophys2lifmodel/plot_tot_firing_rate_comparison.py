@@ -9,12 +9,8 @@ tstop = 500
 num_cell_type = [0, 3700, 7000, 8500, 9300, 10000, 39750, 45000]
 # cell_type = ['Scnn1a', 'Rorb', 'Nr5a1', 'PV1', 'PV2', 'Pyr', 'Int']
 cell_type = ['Scnn1a', 'Rorb', 'Nr5a1', 'PV1', 'PV2']
-# LGN only ref file
-# ref_file = 'results/test500ms_LGN_only_no_con_ref/output_ll2_g8_8_test%dms_LGN_only_no_con_syn_z002/tot_f_rate.dat' % (tstop)
-# TW ref file
-# ref_file = 'results/test500ms_no_con_ref/output_ll2_g8_8_test500ms_no_con_syn_z001/tot_f_rate.dat'
 # Rec ref file
-ref_file = 'results/test500ms_all_ref/output_ll2_g8_8_sd278test500ms_syn_z001/tot_f_rate.dat'
+ref_file = 'results/output_ll2_g8_8_test500ms/tot_f_rate.dat'
 color_cell_type = ['aqua', 'darkred', 'blue', 'green', 'm', 'yellow', 'gray']
 
 
@@ -66,11 +62,6 @@ def plot_tot_firing_rate_comparison(n_file_dir, ref_file=ref_file, N=100, ncol=2
 
 
 def main(idx_syn):
-    # LGN only
-    # plot_tot_firing_rate_comparison('output_ll2_g8_8_test500ms_LGN_only_no_con_lif_syn_z%03d' % (idx_syn))
-    # TW
-    # plot_tot_firing_rate_comparison('output_ll2_g8_8_test500ms_no_con_lif_syn_z%03d' % (idx_syn))
-    # INH
     plot_tot_firing_rate_comparison('output_ll2_g8_8_test%dms_inh_lif_syn_z%03d' % (tstop, idx_syn))
 
 
