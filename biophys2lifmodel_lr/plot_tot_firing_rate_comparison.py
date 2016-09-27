@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from math import floor
 from numpy.fft import rfft, irfft
@@ -10,7 +12,7 @@ num_cell_type = [0, 3700, 7000, 8500, 9300, 10000, 39750, 45000]
 # cell_type = ['Scnn1a', 'Rorb', 'Nr5a1', 'PV1', 'PV2', 'Pyr', 'Int']
 cell_type = ['Scnn1a', 'Rorb', 'Nr5a1', 'PV1', 'PV2']
 # Rec ref file
-ref_file = 'results/output_ll2_g8_8_test500ms/tot_f_rate.dat'
+ref_file = 'output_ll2_g8_8_test500ms/tot_f_rate.dat'
 color_cell_type = ['aqua', 'darkred', 'blue', 'green', 'm', 'yellow', 'gray']
 
 
@@ -55,14 +57,14 @@ def plot_tot_firing_rate_comparison(n_file_dir, ref_file=ref_file, N=100, ncol=2
     plt.ylabel('Firing rate (Hz)')
     plt.title('Running average of the firing rate, N = %d' % (N))
     plt.savefig(n_file_dir+'/comparison_plot.png', dpi=150)
-    plt.savefig(n_file_dir+'comparison_plot.png', dpi=150)
+    # plt.savefig(n_file_dir+'comparison_plot.png', dpi=150)
     # plt.savefig('comparison_plot.png', dpi=150)
     # plt.show()
     plt.close('all')
 
 
 def main(idx_syn):
-    plot_tot_firing_rate_comparison('output_ll2_g8_8_test%dms_inh_lif_syn_z%03d' % (tstop, idx_syn))
+    plot_tot_firing_rate_comparison('output_lr2_g8_8_test%dms_inh_lif_syn_z%03d' % (tstop, idx_syn))
 
 
 if __name__ == '__main__':
