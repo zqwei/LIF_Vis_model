@@ -4,6 +4,8 @@ import cPickle as pickle
 import os
 import scipy.io as sio
 import matplotlib
+matplotlib.use('Agg')
+import matplotlib
 import matplotlib.pyplot as plt
 
 matplotlib.rcParams.update({'font.size': 20})
@@ -88,8 +90,8 @@ def evaluate_and_plot_sparseness_by_cell_type(sim_data,r_data,sp_flag):
                 else:
                     print 'Error: unknown sparseness flag'
 
-    mng = plt.get_current_fig_manager()
-    mng.window.showMaximized()
+    # mng = plt.get_current_fig_manager()
+    # mng.window.showMaximized()
     plt.savefig(sim_data['f_out_spr_hist_eps'], format='eps')
     plt.show()
 
@@ -288,9 +290,9 @@ def sparseness_main(input_dict,sprns_type, plot_only_flag):
                 for i in xrange(sim_data['N_trials']):
                     spk_f_names.append('%s%d%s' % (sim_data['f_1'], i, sim_data['f_2']))
 
-                compute_fr_array_mov(sim_data['cells_file'], spk_f_names, sim_data['f_out_r'], sim_data['t_start'], sim_data['t_stop'], sim_data['bin_size'],sim_data['N_trials'])
+                # compute_fr_array_mov(sim_data['cells_file'], spk_f_names, sim_data['f_out_r'], sim_data['t_start'], sim_data['t_stop'], sim_data['bin_size'],sim_data['N_trials'])
                 #compute_fr_array_imgs(sim_data['cells_file'], spk_f_names, sim_data['f_out_r'], sim_data['t_start'], sim_data['t_stop'], sim_data['bin_size'],sim_data['N_trials'])
-                #compute_fr_array_gratings(sim_data['cells_file'], spk_f_names, sim_data['f_out_r'], sim_data['t_start'], sim_data['t_stop'], sim_data['bin_size'],sim_data['N_trials'])
+                compute_fr_array_gratings(sim_data['cells_file'], spk_f_names, sim_data['f_out_r'], sim_data['t_start'], sim_data['t_stop'], sim_data['bin_size'],sim_data['N_trials'])
 
             print sim_data['f_out_r']
             r_data = np.load(sim_data['f_out_r'])
@@ -303,15 +305,15 @@ if __name__ == '__main__':
 
     #base_dir = '/data/mat/antona/network/14-simulations/9-network/'
     #sys_list = ['ll2','rr2']
-    base_dir = '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/'
+    base_dir = '/data/mat/ZiqiangW/analysis/'
     sys_list = ['ll2']
-    plot_only_flag = 1 #0
+    plot_only_flag = 0 #1 #0
 
     for ss in range(len(sys_list)):
         sys_name=sys_list[ss]
 
-        nat_sim_dict = create_nat_movie_sim_dict(base_dir,sys_name)
-        sparseness_main(nat_sim_dict,'lt',plot_only_flag)
+        # nat_sim_dict = create_nat_movie_sim_dict(base_dir,sys_name)
+        # sparseness_main(nat_sim_dict,'lt',plot_only_flag)
 
-        #grating_sim_dict = create_grating_sim_dict(base_dir,sys_name)
-        #sparseness_main(grating_sim_dict,'lt',plot_only_flag)
+        grating_sim_dict = create_grating_sim_dict(base_dir,sys_name)
+        sparseness_main(grating_sim_dict,'lt',plot_only_flag)
