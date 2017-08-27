@@ -89,9 +89,6 @@ def evaluate_and_plot_sparseness_by_cell_type(sim_data,r_data,sp_flag):
                     ctr = ctr+1
                 else:
                     print 'Error: unknown sparseness flag'
-
-    # mng = plt.get_current_fig_manager()
-    # mng.window.showMaximized()
     plt.savefig(sim_data['f_out_spr_hist_eps'], format='eps')
     plt.show()
 
@@ -108,7 +105,6 @@ def calc_sprns_by_cell_type(cells_file,r_data,ctype_str,sp_flag):
         print 'Error: unknown sparseness flag'
 
     if ctype_str=='all_bp_exc':
-        #ct_inds = []
         ct_inds_1 = np.array(np.where(cells_db['type']=='Scnn1a'))
         ct_inds_2 = np.array(np.where(cells_db['type']=='Rorb'))
         ct_inds_3 = np.array(np.where(cells_db['type']=='Nr5a1'))
@@ -120,7 +116,6 @@ def calc_sprns_by_cell_type(cells_file,r_data,ctype_str,sp_flag):
     else:
         ct_inds = np.array(np.where(cells_db['type']==ctype_str))
         ct_inds = ct_inds[0]
-        #print ct_inds, ctype_str
 
     rates_array = r_data[ct_inds]
     n_frames = rshape[sp_ind]
@@ -225,11 +220,7 @@ def create_nat_movie_sim_dict(base_dir,sys_name):
 
         # Decide which simulations we are doing analysis for.
         sim_dict = {}
-        if sys_name=='ll2':
-            #f2 = '_sd278/spk.dat'
-            f2 = '_sdlif_z101/spk.dat'
-        elif sys_name=='rr2':
-            f2 = '_sd282_cn0/spk.dat'
+        f2 = '_sdlif_z101/spk.dat'
 
         sim_dict[expt_str] = {'cells_file': '/data/mat/antona/network/14-simulations/9-network/build/'+sys_name+'.csv',
                             't_start': 500.0,
@@ -239,8 +230,8 @@ def create_nat_movie_sim_dict(base_dir,sys_name):
                             #'f_1': base_dir+'simulations_'+sys_name+'/natural_movies/output_'+sys_name+'_TouchOfEvil_frames_'+f1_str,
                             'f_1': base_dir+'simulation_'+sys_name+'/output_'+sys_name+'_TouchOfEvil_frames_'+f1_str,
                             'f_2': f2,
-                            'f_out_r': 'LIF' + expt_str+'_r.npy',
-                            'f_out_spr_hist_eps': 'LIF' + expt_str + 'spr_hist.eps'}
+                            'f_out_r': 'sparseness/LIF' + expt_str+'_r.npy',
+                            'f_out_spr_hist_eps': 'sparseness/LIF' + expt_str + 'spr_hist.eps'}
 
         sim_dict_list[kk] = sim_dict
 
@@ -257,11 +248,7 @@ def create_grating_sim_dict(base_dir,sys_name):
 
         # Decide which simulations we are doing analysis for.
         sim_dict = {}
-        if sys_name=='ll2':
-            #f2 = '_sd278/spk.dat'
-            f2 = '_sdlif_z101/spk.dat'
-        elif sys_name=='rr2':
-            f2 = '_sd282_cn0/spk.dat'
+        f2 = '_sdlif_z101/spk.dat'
 
         sim_dict[expt_str] = {'cells_file': '/data/mat/antona/network/14-simulations/9-network/build/'+sys_name+'.csv',
                             't_start': 500.0,
@@ -271,27 +258,43 @@ def create_grating_sim_dict(base_dir,sys_name):
 #                            'f_1': base_dir+'simulations_'+sys_name+'/gratings/output_'+sys_name+'_g'+f1_str+'_',
                             'f_1': base_dir+'simulation_'+sys_name+'/output_'+sys_name+'_g'+f1_str+'_',
                             'f_2': f2,
-                            'f_out_r': 'LIF' + expt_str + '_r_v2.npy',
-                            'f_out_spr_hist_eps': 'LIF' + expt_str + 'spr_hist.eps'}
+                            'f_out_r': 'sparseness/LIF' + expt_str + '_r_v2.npy',
+                            'f_out_spr_hist_eps': 'sparseness/LIF' + expt_str + 'spr_hist.eps'}
 
         sim_dict_list[kk] = sim_dict
 
     return sim_dict_list
 
-def sparseness_main(input_dict,sprns_type, plot_only_flag):
-
+def sparseness_nat(input_dict,sprns_type, plot_only_flag):
     for kk in range(len(input_dict)):
         sim_dict = input_dict[kk]
         for sim_key in sim_dict.keys():
             sim_data = sim_dict[sim_key]
-
             if plot_only_flag!=1:
                 spk_f_names = []
                 for i in xrange(sim_data['N_trials']):
                     spk_f_names.append('%s%d%s' % (sim_data['f_1'], i, sim_data['f_2']))
+                compute_fr_array_mov(sim_data['cells_file'], spk_f_names, sim_data['f_out_r'], sim_data['t_start'], sim_data['t_stop'], sim_data['bin_size'],sim_data['N_trials'])
+                # compute_fr_array_imgs(sim_data['cells_file'], spk_f_names, sim_data['f_out_r'], sim_data['t_start'], sim_data['t_stop'], sim_data['bin_size'],sim_data['N_trials'])
+                # compute_fr_array_gratings(sim_data['cells_file'], spk_f_names, sim_data['f_out_r'], sim_data['t_start'], sim_data['t_stop'], sim_data['bin_size'],sim_data['N_trials'])
 
+            print sim_data['f_out_r']
+            r_data = np.load(sim_data['f_out_r'])
+            evaluate_and_plot_sparseness_by_cell_type(sim_data,r_data,sprns_type)
+            #calc_sprns_by_range_and_plot(r_data,np.arange(0,8500,1),'lt')
+
+
+def sparseness_gratings(input_dict,sprns_type, plot_only_flag):
+    for kk in range(len(input_dict)):
+        sim_dict = input_dict[kk]
+        for sim_key in sim_dict.keys():
+            sim_data = sim_dict[sim_key]
+            if plot_only_flag!=1:
+                spk_f_names = []
+                for i in xrange(sim_data['N_trials']):
+                    spk_f_names.append('%s%d%s' % (sim_data['f_1'], i, sim_data['f_2']))
                 # compute_fr_array_mov(sim_data['cells_file'], spk_f_names, sim_data['f_out_r'], sim_data['t_start'], sim_data['t_stop'], sim_data['bin_size'],sim_data['N_trials'])
-                #compute_fr_array_imgs(sim_data['cells_file'], spk_f_names, sim_data['f_out_r'], sim_data['t_start'], sim_data['t_stop'], sim_data['bin_size'],sim_data['N_trials'])
+                # compute_fr_array_imgs(sim_data['cells_file'], spk_f_names, sim_data['f_out_r'], sim_data['t_start'], sim_data['t_stop'], sim_data['bin_size'],sim_data['N_trials'])
                 compute_fr_array_gratings(sim_data['cells_file'], spk_f_names, sim_data['f_out_r'], sim_data['t_start'], sim_data['t_stop'], sim_data['bin_size'],sim_data['N_trials'])
 
             print sim_data['f_out_r']
@@ -302,18 +305,13 @@ def sparseness_main(input_dict,sprns_type, plot_only_flag):
 
 
 if __name__ == '__main__':
-
-    #base_dir = '/data/mat/antona/network/14-simulations/9-network/'
-    #sys_list = ['ll2','rr2']
     base_dir = '/data/mat/ZiqiangW/analysis/'
     sys_list = ['ll2']
     plot_only_flag = 0 #1 #0
 
     for ss in range(len(sys_list)):
         sys_name=sys_list[ss]
-
-        # nat_sim_dict = create_nat_movie_sim_dict(base_dir,sys_name)
-        # sparseness_main(nat_sim_dict,'lt',plot_only_flag)
-
+        nat_sim_dict = create_nat_movie_sim_dict(base_dir,sys_name)
+        sparseness_nat(nat_sim_dict,'lt',plot_only_flag)
         grating_sim_dict = create_grating_sim_dict(base_dir,sys_name)
-        sparseness_main(grating_sim_dict,'lt',plot_only_flag)
+        sparseness_gratings(grating_sim_dict,'lt',plot_only_flag)
