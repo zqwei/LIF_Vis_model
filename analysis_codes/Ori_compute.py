@@ -10,7 +10,7 @@ import f_rate_t_by_type_functions as frtbt
 
 N_trials = 10
 
-cell_db_path = '/data/mat/antona/network/14-simulations/9-network/build/'
+cell_db_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/build/'
 # Decide which systems we are doing analysis for.
 sys_dict = {}
 sys_dict['ll1'] = {'cells_file': cell_db_path+'ll1.csv',
@@ -58,7 +58,7 @@ sys_dict['ll2_TF4Hz'] = { 'cells_file': cell_db_path+'ll2.csv',
 
 
 # Load gratings metadata.
-grating_par = pd.read_csv('/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt', sep=' ', header=None)
+grating_par = pd.read_csv('/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt', sep=' ', header=None)
 grating_par.columns = ['path', 'ori', 'SF', 'TF', 'ignore']
 tmp_par = grating_par['path'].str.split('.').str[-2].str.split('_').str[-1]
 grating_par['grating_id'] = tmp_par

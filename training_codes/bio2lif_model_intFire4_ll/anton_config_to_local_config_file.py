@@ -16,8 +16,8 @@ if len(glob('anton_config_test/config_*.json')) > 0:
                     makedirs(output_dir)
                 data["biophys"][0]["model_file"][0] = new_file_name + '_lif_amp_100.json'
                 data["syn_data_file"] = "syn_data_278_lif_amp_100.json"
-                old_str = [s for s in data["ext_inputs"].keys() if '/data/mat/antona' in s][0]
-                new_str = old_str.replace('/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/', '', 2)
+                old_str = [s for s in data["ext_inputs"].keys() if '/allen/aibs/mat/antona' in s][0]
+                new_str = old_str.replace('/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/', '', 2)
                 data["ext_inputs"][new_str] = data["ext_inputs"][old_str]
                 data["ext_inputs"].pop(old_str)
                 with open(new_file_name + '_lif_amp_100.json', 'w') as output_file:

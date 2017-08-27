@@ -11,7 +11,7 @@ result_fname = 'Ori/av_tuning.csv'
 result_fig_CV = 'Ori/CV_ori_av.eps'
 result_fig_DSI = 'Ori/DSI_av.eps'
 
-cell_db_path = '/data/mat/antona/network/14-simulations/9-network/build/'
+cell_db_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/build/'
 # Decide which systems we are doing analysis for.
 sys_dict = {}
 #sys_dict['ll1'] = { 'cells_file': '../build/ll1.csv', 'f_1': '../simulations_ll1/output_ll1_', 'f_2': '_sd278/spk.dat', 'f_3': '_sd278/tot_f_rate.dat', 'f_out': 'Ori/ll1_rates.npy', 'f_out_pref': 'Ori/ll1_pref_stat.csv', 'grating_id': range(6, 240, 30)+range(7, 240, 30)+range(8, 240, 30)+range(9, 240, 30) }
@@ -64,7 +64,7 @@ exp_f_list = ['ANL4Exc.csv', 'AWL4Exc.csv', 'ANInh.csv', 'AWInh.csv'] #'ANL4Inh.
 exp_labels = ['An. L4 Exc.', 'Aw. L4 Exc.', 'An. Inh.', 'Aw. Inh.'] #'An. L4 Inh.', 'Aw. L4 Inh.']
 exp_data = {}
 for i_exp, exp_f in enumerate(exp_f_list):
-    exp_data[exp_labels[i_exp]] = pd.read_csv('/data/mat/antona/experimental_data/ephys_Sev/2016_paper_data/gratings/' + exp_f, sep=',')
+    exp_data[exp_labels[i_exp]] = pd.read_csv('/allen/aibs/mat/antona/experimental_data/ephys_Sev/2016_paper_data/gratings/' + exp_f, sep=',')
 
 
 # Plot distributions.

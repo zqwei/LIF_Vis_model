@@ -8,8 +8,8 @@ import plot_functions
 #axes.set_ylim((0, 45000))
 #plt.show()
 
-tw_map = '/data/mat/antona/network/14-simulations/9-network/'
-cell_db_path = '/data/mat/antona/network/14-simulations/9-network/build/'
+tw_map = '/allen/aibs/mat/antona/network/14-simulations/9-network/'
+cell_db_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/build/'
 
 tw_src_id = 552
 fig, axes = plot_functions.plot_spikes_tw('../simulation_ll2/output_ll2_spont_8_sdlif_z101/spk.dat',

@@ -72,7 +72,7 @@ def within_bounds(params, y_av):
 
 
 # Decide which systems we are doing analysis for.
-cell_db_path = '/data/mat/antona/network/14-simulations/9-network/build/'
+cell_db_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/build/'
 sys_dict = {}
 sys_dict['ll2'] = {'cells_file': cell_db_path+'ll2.csv',
                     'f_1': '../simulation_ll2/output_ll2_',

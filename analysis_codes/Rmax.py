@@ -15,7 +15,7 @@ result_fname_prefix = 'Rmax/Rmax_by_type'
 result_fname = result_fname_prefix + '.csv'
 result_fig_fname = result_fname_prefix + '.eps'
 
-cell_db_path = '/data/mat/antona/network/14-simulations/9-network/build/'
+cell_db_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/build/'
 # Decide which systems we are doing analysis for.
 sys_dict = {}
 sys_dict['ll1'] = {'cells_file': cell_db_path+'ll1.csv',
@@ -90,7 +90,7 @@ exp_rates_Inh = np.array([])
 exp_data_mean = []
 exp_data_std = []
 for i_exp, exp_f in enumerate(exp_f_list):
-    tmp_df = pd.read_csv('/data/mat/antona/experimental_data/ephys_Sev/2016_paper_data/gratings/' + exp_f, sep=',')
+    tmp_df = pd.read_csv('/allen/aibs/mat/antona/experimental_data/ephys_Sev/2016_paper_data/gratings/' + exp_f, sep=',')
     exp_data_mean.append(tmp_df['Rmax'].mean())
     exp_data_std.append(tmp_df['Rmax'].std())
 

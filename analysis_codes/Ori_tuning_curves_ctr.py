@@ -12,7 +12,7 @@ gids = [50, 5000, 8200, 8900, 9600]
 # Number of trials to use for calculation of spont rate.
 N_trials_spont = 20
 
-cell_db_path = '/data/mat/antona/network/14-simulations/9-network/build/'
+cell_db_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/build/'
 # Decide which systems we are doing analysis for.
 sys_dict = {}
 sys_dict['ll2_TF4Hz'] = { 'cells_file': cell_db_path+'ll2.csv',

@@ -64,7 +64,7 @@ def run_simulation(config_f_name):
   #    mkstim_IClamp(gid, 0.05, 0.0, utils_obj.description.data["run"]["tstop"])
   #h.load_file('IClamp_update.hoc')
   #tmp_line  = str(stim_list[0].hname())
-  #in_file_n = '/data/mat/antona/Lu-data/Rorb-08-08-2013/cell5/2013_08_08_0012_add_stimulus_i_sweep_0014.dat'
+  #in_file_n = '/allen/aibs/mat/antona/Lu-data/Rorb-08-08-2013/cell5/2013_08_08_0012_add_stimulus_i_sweep_0014.dat'
   #h.IClamp_update(tmp_line, in_file_n)
   
   # h.load_file('mkstim_SEClamp.hoc')

@@ -28,7 +28,7 @@ t_av_stop = 1000.0
 
 # Decide which systems we are doing analysis for.
 sys_dict = {}
-cell_db_path = '/data/mat/antona/network/14-simulations/9-network/build/'
+cell_db_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/build/'
 sys_dict['ll2'] = {'cells_file': cell_db_path+'ll2.csv',
                     'f_1': '../simulation_ll2/output_ll2_flash_2_',
                     'f_2': '_sdlif_z101/spk.dat',

@@ -4,7 +4,7 @@ matplotlib.rcParams.update({'font.size': 15})
 import matplotlib.pyplot as plt
 import pandas as pd
 
-cell_db_path = '/data/mat/antona/network/14-simulations/9-network/build/'
+cell_db_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/build/'
 cells_file = cell_db_path + 'll2.csv'
 cells_db = pd.read_csv(cells_file, sep=' ')
 

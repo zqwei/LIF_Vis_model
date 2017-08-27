@@ -15,7 +15,7 @@ r_cutoff = 10.0  # Distance, in um, below which the weights for 1/r contribution
 N_trials = 10
 
 # Decide which systems we are doing analysis for.
-cell_db_path = '/data/mat/antona/network/14-simulations/9-network/build/'
+cell_db_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/build/'
 # Decide which systems we are doing analysis for.
 sys_dict = {}
 sys_dict['ll1'] = {'cells_file': cell_db_path+'ll1.csv', 

@@ -3,8 +3,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import plot_functions
 
-tw_map = '/data/mat/antona/network/14-simulations/9-network/'
-cell_db_path = '/data/mat/antona/network/14-simulations/9-network/build/'
+tw_map = '/allen/aibs/mat/antona/network/14-simulations/9-network/'
+cell_db_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/build/'
 
 t_vis_stim = [600.0, 650.0]
 tw_src_id = 552

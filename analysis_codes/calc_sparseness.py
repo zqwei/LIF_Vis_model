@@ -222,7 +222,7 @@ def create_nat_movie_sim_dict(base_dir,sys_name):
         sim_dict = {}
         f2 = '_sdlif_z101/spk.dat'
 
-        sim_dict[expt_str] = {'cells_file': '/data/mat/antona/network/14-simulations/9-network/build/'+sys_name+'.csv',
+        sim_dict[expt_str] = {'cells_file': '/allen/aibs/mat/antona/network/14-simulations/9-network/build/'+sys_name+'.csv',
                             't_start': 500.0,
                             't_stop': 5000.0,
                             'bin_size':33.3,
@@ -250,7 +250,7 @@ def create_grating_sim_dict(base_dir,sys_name):
         sim_dict = {}
         f2 = '_sdlif_z101/spk.dat'
 
-        sim_dict[expt_str] = {'cells_file': '/data/mat/antona/network/14-simulations/9-network/build/'+sys_name+'.csv',
+        sim_dict[expt_str] = {'cells_file': '/allen/aibs/mat/antona/network/14-simulations/9-network/build/'+sys_name+'.csv',
                             't_start': 500.0,
                             't_stop': 3000.0,
                             'bin_size':33.3,
@@ -305,7 +305,7 @@ def sparseness_gratings(input_dict,sprns_type, plot_only_flag):
 
 
 if __name__ == '__main__':
-    base_dir = '/data/mat/ZiqiangW/analysis/'
+    base_dir = '/allen/aibs/mat/ZiqiangW/analysis_intFire1/'
     sys_list = ['ll2']
     plot_only_flag = 0 #1 #0
 
