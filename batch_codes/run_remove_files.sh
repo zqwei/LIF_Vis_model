@@ -1,0 +1,9 @@
+rm f_rate_hist/*.*
+rm flashes/*.*
+rm gratings/*.*
+rm movies/*.*
+rm Ori/*.*
+rm oscillations/*.*
+rm Rmax/*.*
+rm spont_activity/*.*
+mkdir sparseness
