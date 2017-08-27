@@ -20,7 +20,8 @@ proc init() {
 
 	ac = new IntFire1()
 
-	ac.tau  =  5.90801214238
+	// ac.tau  =  5.90801214238
+    ac.tau  =  22.2
 	ac.refrac  =  3.0
 }
 

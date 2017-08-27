@@ -19,8 +19,9 @@ objref this
 proc init() {
 
 	ac = new IntFire1()
-
-	ac.tau  =  23.9502986215
+	// ac.tau  =  23.9502986215
+    // ac.tau  =  30
+    ac.tau  =  44.9
 	ac.refrac  =  3.0
 }
 
