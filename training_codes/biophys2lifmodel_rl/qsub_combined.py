@@ -98,7 +98,7 @@ for syn_data_file in glob('syn_data_*.json'):
     # for stim_name in ['Wbar_v50pixps_vert', 'Wbar_v50pixps_hor', 'Bbar_v50pixps_vert', 'Bbar_v50pixps_hor']:
     #     for trial in xrange(0, 10):
     #         jobname = '%s_%s_%d_sd%d' % (system_name, stim_name, trial, syn_data_id)
-    #         vis_stim_path = '/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/output2/%s_LGN_spk.dat' % (stim_name)
+    #         vis_stim_path = '/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/output2/%s_LGN_spk.dat' % (stim_name)
     #         vis_t_shift = 0.0
     #         vis_trials_in_file = 20
     
