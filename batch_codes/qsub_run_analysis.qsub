@@ -1,0 +1,11 @@
+#PBS -q mindscope
+#PBS -l walltime=12:00:00
+#PBS -l nodes=5:ppn=32
+#PBS -N rr2_g8_8_test500ms_inh_lif_syn_z101
+#PBS -r n
+#PBS -j oe
+#PBS -o output_rr2_g8_8_test500ms_inh_lif_syn_z101/rr2_g8_8_test500ms_inh_lif_syn_z101.out
+#PBS -m a
+cd $PBS_O_WORKDIR
+
+./run_analysis.sh
