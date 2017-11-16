@@ -1,10 +1,10 @@
-import oscillations
 import pickle
 import numpy as np
-import matplotlib.pyplot as plt
 import matplotlib
-
-matplotlib.rcParams.update({'font.size': 20})
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+# import matplotlib
+# matplotlib.rcParams.update({'font.size': 20})
 
 bin_start = 500.0
 bin_stop = 3000.0
@@ -18,42 +18,27 @@ N_trials = 10
 
 
 cell_db_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/build/'
+file_old_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/'
 file_db_path = '/allen/aibs/mat/ZiqiangW/'
 
 # Decide which systems we are doing analysis for.
 sys_dict = {}
 
-#sys_dict['ll1'] = { 'cells_file': '../build/ll1.csv', 'f_1': '../simulations_ll1/gratings/output_ll1_', 'f_2': '_sd278/spk.dat', 'f_out_prefix': 'oscillations/ll1_spectrum', 'grating_ids': [range(6, 240, 30), range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': '--' }
-#sys_dict['ll2'] = { 'cells_file': '../build/ll2.csv', 'f_1': '../simulations_ll2/gratings/output_ll2_', 'f_2': '_sd278/spk.dat', 'f_out_prefix': 'oscillations/ll2_spectrum', 'grating_ids': [range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': '-' }
-#sys_dict['ll3'] = { 'cells_file': '../build/ll3.csv', 'f_1': '../simulations_ll3/gratings/output_ll3_', 'f_2': '_sd278/spk.dat', 'f_out_prefix': 'oscillations/ll3_spectrum', 'grating_ids': [range(8, 240, 30)], 'marker': ':' }
+sys_dict['ll1'] = { 'f_out_prefix': '/allen/aibs/mat/antona/network/14-simulations/9-network/analysis/oscillations/ll1_spectrum', 'grating_ids': [range(6, 240, 30), range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': '--' }
+sys_dict['ll2'] = { 'f_out_prefix': '/allen/aibs/mat/antona/network/14-simulations/9-network/analysis/oscillations/ll2_spectrum', 'grating_ids': [range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': '-' }
+sys_dict['ll3'] = { 'f_out_prefix': '/allen/aibs/mat/antona/network/14-simulations/9-network/analysis/oscillations/ll3_spectrum', 'grating_ids': [range(8, 240, 30)], 'marker': ':' }
 
-#sys_dict['LIF_ll1'] = { 'cells_file': '../build/ll1.csv', 'f_1': '/data//mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/simulation_ll1/output_ll1_', 'f_2': '_sdlif_z101/spk.dat', 'f_out_prefix': 'oscillations/LIF_ll1_spectrum', 'grating_ids': [range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': '--' }
-#sys_dict['LIF_ll2'] = { 'cells_file': '../build/ll2.csv', 'f_1': '/data//mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/simulation_ll2/output_ll2_', 'f_2': '_sdlif_z101/spk.dat', 'f_out_prefix': 'oscillations/LIF_ll2_spectrum', 'grating_ids': [range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': '-' }
-#sys_dict['LIF_ll3'] = { 'cells_file': '../build/ll3.csv', 'f_1': '/data//mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/simulation_ll3/output_ll3_', 'f_2': '_sdlif_z101/spk.dat', 'f_out_prefix': 'oscillations/LIF_ll3_spectrum', 'grating_ids': [range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': ':' }
+# sys_dict['LIF_ll1'] = { 'f_out_prefix': file_db_path + 'analysis_intFire1/analysis_ll/oscillations/ll1_spectrum', 'grating_ids': [range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': '--' }
+# sys_dict['LIF_ll2'] = { 'f_out_prefix': file_db_path + 'analysis_intFire1/analysis_ll/oscillations/ll2_spectrum', 'grating_ids': [range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': '-' }
+# sys_dict['LIF_ll3'] = { 'f_out_prefix': file_db_path + 'analysis_intFire1/analysis_ll/oscillations/ll3_spectrum', 'grating_ids': [range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': ':' }
 
-#sys_dict['LIF_IntFire4_try'] = { 'cells_file': '../build/ll2.csv', 'f_1': '/data/mat/ZiqiangW/bio2lif_model_intFire4/output_ll2_', 'f_2': '_test500ms_inh_lif_syn_z122/spk.dat', 'f_out_prefix': 'oscillations/LIF_IntFire4_try_z122_spectrum', 'grating_ids': [[8] ], 'marker': '-' }
+# sys_dict['LIF_IntFire4_ll1'] = { 'f_out_prefix': file_db_path + 'analysis_intFire4/analysis_ll/oscillations/ll1_spectrum', 'grating_ids': [range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': '--' }
+# sys_dict['LIF_IntFire4_ll2'] = { 'f_out_prefix': file_db_path + 'analysis_intFire4/analysis_ll/oscillations/ll2_spectrum', 'grating_ids': [range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': '-' }
+# sys_dict['LIF_IntFire4_ll3'] = { 'f_out_prefix': file_db_path + 'analysis_intFire4/analysis_ll/oscillations/ll3_spectrum', 'grating_ids': [range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': ':' }
 
-sys_dict['LIF_IntFire4_ll1'] = { 'cells_file': cell_db_path + 'll1.csv', 'f_1': file_db_path + 'analysis_intFire4/simulation_ll1/output_ll1_', 'f_2': '_sdlif_z101/spk.dat', 'f_out_prefix': 'oscillations/LIF_IntFire4_ll1_spectrum', 'grating_ids': [range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': '--' }
-sys_dict['LIF_IntFire4_ll2'] = { 'cells_file': cell_db_path + 'll2.csv', 'f_1': file_db_path + 'analysis_intFire4/simulation_ll2/output_ll2_', 'f_2': '_sdlif_z101/spk.dat', 'f_out_prefix': 'oscillations/LIF_IntFire4_ll2_spectrum', 'grating_ids': [range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': '-' }
-sys_dict['LIF_IntFire4_ll3'] = { 'cells_file': cell_db_path + 'll3.csv', 'f_1': file_db_path + 'analysis_intFire4/simulation_ll3/output_ll3_', 'f_2': '_sdlif_z101/spk.dat', 'f_out_prefix': 'oscillations/LIF_IntFire4_ll3_spectrum', 'grating_ids': [range(7, 240, 30), range(8, 240, 30), range(9, 240, 30)], 'marker': ':' }
-
-#output_fig = 'oscillations/oscillations_ll.eps'
-#output_fig = 'oscillations/oscillations_LIF_ll.eps'
-output_fig = 'oscillations/oscillations_LIF_InteFire4.eps'
-
-# Process the data and obtain spectra.
-for sys_name in sys_dict.keys():
-    for gratings_list in sys_dict[sys_name]['grating_ids']:
-        f_spk_list = []
-        cells_file_list = []
-        for grating_id in gratings_list:
-            for trial in xrange(N_trials):
-                f_spk_list.append('%sg%d_%d%s' % (sys_dict[sys_name]['f_1'], grating_id, trial, sys_dict[sys_name]['f_2']))
-                cells_file_list.append(sys_dict[sys_name]['cells_file'])
-        tmp = oscillations.av_r_weighted_mu_activity(f_spk_list, cells_file_list, electrode_pos, r_cutoff, bin_start, bin_stop, bin_size)
-        f = open('%s_%d.pkl' % (sys_dict[sys_name]['f_out_prefix'], gratings_list[0]), 'w')
-        pickle.dump(tmp, f)
-        f.close()
+output_fig = 'oscillations/oscillations_Bio_ll.eps'
+# output_fig = 'oscillations/oscillations_LIF_InteFire1.eps'
+# output_fig = 'oscillations/oscillations_LIF_InteFire4.eps'
 
 # Plot the results.
 for sys_name in sys_dict.keys():
@@ -67,13 +52,10 @@ for sys_name in sys_dict.keys():
     plt.errorbar(freq_fft_abs[ind], 1000.0*av_fft_abs[ind], yerr=1000.0*std_fft_abs[ind], ls=sys_dict[sys_name]['marker'], color='k', linewidth=2, capsize=0, ecolor='lightgray', elinewidth=5, label=f_name)
 
 #plt.yscale('log')
-plt.legend()
-
+# plt.legend()
+plt.xlim(0, 100)
+plt.ylim(0, 0.8)
 plt.ylabel('Power (arb. u.)')
 plt.xlabel('Frequency (Hz)')
-
 plt.savefig(output_fig, format='eps')
-
 plt.show()
-
-
