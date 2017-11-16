@@ -5,7 +5,6 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import scipy.stats as scp_stats
 import pandas as pd
-# matplotlib.rcParams.update({'font.size': 20})
 
 N_trials = 20
 
@@ -20,13 +19,13 @@ sys_dict['ll1'] = { 'f_out': '/allen/aibs/mat/antona/network/14-simulations/9-ne
 sys_dict['ll2'] = { 'f_out': '/allen/aibs/mat/antona/network/14-simulations/9-network/analysis/spont_activity/ll2_spont.csv', 'types': [] }
 sys_dict['ll3'] = { 'f_out': '/allen/aibs/mat/antona/network/14-simulations/9-network/analysis/spont_activity/ll3_spont.csv', 'types': [] }
 #sys_dict['rr2'] = { 'cells_file': '../build/rr2.csv', 'f_1': '../output_rr2_spont_', 'f_2': '_sd282_cn0/spk.dat', 'f_3': '_sd282_cn0/tot_f_rate.dat', 'f_out': 'spont_activity/rr2_spont.csv', 'types': [] }
-#sys_dict['ll1_LIF'] = { 'cells_file': '../build/ll1.csv', 'f_1': '/data/mat/ZiqiangW/simulation_ll_syn_data_lif_z102/simulation_ll1/output_ll1_spont_', 'f_2': '_sdlif_z101/spk.dat', 'f_3': '_sdlif_z101/tot_f_rate.dat', 'f_out': 'spont_activity_LIF/ll1_spont.csv', 'types': [] }
-#sys_dict['ll2_LIF'] = { 'cells_file': '../build/ll2.csv', 'f_1': '/data/mat/ZiqiangW/simulation_ll_syn_data_lif_z102/simulation_ll2/output_ll2_spont_', 'f_2': '_sdlif_z101/spk.dat', 'f_3': '_sdlif_z101/tot_f_rate.dat', 'f_out': 'spont_activity_LIF/ll2_spont.csv', 'types': [] }
-#sys_dict['ll3_LIF'] = { 'cells_file': '../build/ll3.csv', 'f_1': '/data/mat/ZiqiangW/simulation_ll_syn_data_lif_z102/simulation_ll3/output_ll3_spont_', 'f_2': '_sdlif_z101/spk.dat', 'f_3': '_sdlif_z101/tot_f_rate.dat', 'f_out': 'spont_activity_LIF/ll3_spont.csv', 'types': [] }
+# sys_dict['ll1_LIF'] = { 'f_out': '../analysis_intFire1/analysis_ll/spont_activity/ll1_spont.csv', 'types': [] }
+# sys_dict['ll2_LIF'] = { 'f_out': '../analysis_intFire1/analysis_ll/spont_activity/ll2_spont.csv', 'types': [] }
+# sys_dict['ll3_LIF'] = { 'f_out': '../analysis_intFire1/analysis_ll/spont_activity/ll3_spont.csv', 'types': [] }
 
 
 result_fname_prefix = 'spont_activity/new_av_spont_rates_by_type_bio_ll'
-#result_fname_prefix = 'spont_activity_LIF/new_av_spont_rates_by_type'
+# result_fname_prefix = 'spont_activity_LIF/new_av_spont_rates_by_type'
 result_fig_fname = result_fname_prefix + '.eps'
 
 # Read files with firing rate averages over trials for simulations.
@@ -71,17 +70,11 @@ for i, type_key in enumerate(type_order):
 ax.set_ylim((0.0, y_lim_top))
 ax.set_xticks(range(1, len(type_order)+1))
 ax.set_xticklabels(type_order)
-
 ax.set_ylabel('Spontaneous rate (Hz)')
-
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 ax.yaxis.set_ticks_position('left')
 ax.xaxis.set_ticks_position('bottom')
 ax.tick_params(size=10)
-
 plt.savefig(result_fig_fname, format='eps')
-
 plt.show()
-
-
