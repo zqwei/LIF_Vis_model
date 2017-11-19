@@ -8,56 +8,26 @@ import pandas as pd
 
 N_trials = 10
 
+cell_db_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/analysis/'
+
 # Decide which systems we are doing analysis for.
 sys_dict = {}
-#sys_dict['ll1'] = { 'cells_file': '../build/ll1.csv', 'f_1': '../simulations_ll1/gratings/output_ll1_', 'f_2': '_sd278/spk.dat', 'f_3': '_sd278/tot_f_rate.dat', 'f_out': 'Rmax/ll1_Rmax.csv', 'grating_ids': range(6, 240, 30)+range(7, 240, 30)+range(8, 240, 30)+range(9, 240, 30) }
-#sys_dict['ll2'] = { 'cells_file': '../build/ll2.csv', 'f_1': '../simulations_ll2/gratings/output_ll2_', 'f_2': '_sd278/spk.dat', 'f_3': '_sd278/tot_f_rate.dat', 'f_out': 'Rmax/ll2_Rmax.csv', 'grating_ids': range(7, 240, 30)+range(8, 240, 30)+range(9, 240, 30) }
-#sys_dict['ll3'] = { 'cells_file': '../build/ll3.csv', 'f_1': '../simulations_ll3/gratings/output_ll3_', 'f_2': '_sd278/spk.dat', 'f_3': '_sd278/tot_f_rate.dat', 'f_out': 'Rmax/ll3_Rmax.csv', 'grating_ids': range(8, 240, 30) }
-#sys_dict['ll1_LIF'] = { 'cells_file': '../build/ll1.csv', 'f_1': '/data/mat/ZiqiangW/simulation_ll_syn_data_lif_z102/simulation_ll1/output_ll1_', 'f_2': '_sdlif_z101/spk.dat', 'f_3': '_sdlif_z101/tot_f_rate.dat', 'f_out': 'Rmax_LIF/ll1_Rmax.csv', 'grating_ids': range(7, 240, 30)+range(8, 240, 30)+range(9, 240, 30) }
-#sys_dict['ll2_LIF'] = { 'cells_file': '../build/ll2.csv', 'f_1': '/data/mat/ZiqiangW/simulation_ll_syn_data_lif_z102/simulation_ll2/output_ll2_', 'f_2': '_sdlif_z101/spk.dat', 'f_3': '_sdlif_z101/tot_f_rate.dat', 'f_out': 'Rmax_LIF/ll2_Rmax.csv', 'grating_ids': range(7, 240, 30)+range(8, 240, 30)+range(9, 240, 30) }
-#sys_dict['ll3_LIF'] = { 'cells_file': '../build/ll3.csv', 'f_1': '/data/mat/ZiqiangW/simulation_ll_syn_data_lif_z102/simulation_ll3/output_ll3_', 'f_2': '_sdlif_z101/spk.dat', 'f_3': '_sdlif_z101/tot_f_rate.dat', 'f_out': 'Rmax_LIF/ll3_Rmax.csv', 'grating_ids': range(8, 240, 30) }
-sys_dict['ll1_LGN_only_no_con'] = { 'cells_file': '../build/ll1.csv', 'f_1': '../simulations_ll1/gratings/output_ll1_', 'f_2': '_sd278_LGN_only_no_con/spk.dat', 'f_3': '_sd278_LGN_only_no_con/tot_f_rate.dat', 'f_out': 'Rmax/ll1_Rmax_LGN_only_no_con.csv', 'grating_ids': [7, 37]+range(97, 240, 30)+range(8, 240, 30) }
-sys_dict['ll2_LGN_only_no_con'] = { 'cells_file': '../build/ll2.csv', 'f_1': '../simulations_ll2/gratings/output_ll2_', 'f_2': '_sd278_LGN_only_no_con/spk.dat', 'f_3': '_sd278_LGN_only_no_con/tot_f_rate.dat', 'f_out': 'Rmax/ll2_Rmax_LGN_only_no_con.csv', 'grating_ids': range(7, 240, 30)+range(8, 240, 30) }
-sys_dict['ll3_LGN_only_no_con'] = { 'cells_file': '../build/ll1.csv', 'f_1': '../simulations_ll3/gratings/output_ll3_', 'f_2': '_sd278_LGN_only_no_con/spk.dat', 'f_3': '_sd278_LGN_only_no_con/tot_f_rate.dat', 'f_out': 'Rmax/ll3_Rmax_LGN_only_no_con.csv', 'grating_ids': range(7, 240, 30)+[8, 38]+range(98, 240, 30) }
+# sys_dict['ll1'] = { 'f_out': cell_db_path + 'Rmax/ll1_Rmax.csv', 'grating_ids': range(6, 240, 30)+range(7, 240, 30)+range(8, 240, 30)+range(9, 240, 30) }
+# sys_dict['ll2'] = { 'f_out': cell_db_path + 'Rmax/ll2_Rmax.csv', 'grating_ids': range(7, 240, 30)+range(8, 240, 30)+range(9, 240, 30) }
+# sys_dict['ll3'] = { 'f_out': cell_db_path + 'Rmax/ll3_Rmax.csv', 'grating_ids': range(8, 240, 30) }
 
+# sys_dict['ll1_LIF'] = { 'f_out': '../analysis_intFire1/analysis_ll/Rmax/ll1_Rmax.csv', 'grating_ids': range(7, 240, 30)+range(8, 240, 30)+range(9, 240, 30) }
+# sys_dict['ll2_LIF'] = { 'f_out': '../analysis_intFire1/analysis_ll/Rmax/ll2_Rmax.csv', 'grating_ids': range(7, 240, 30)+range(8, 240, 30)+range(9, 240, 30) }
+# sys_dict['ll3_LIF'] = { 'f_out': '../analysis_intFire1/analysis_ll/Rmax/ll3_Rmax.csv', 'grating_ids': range(8, 240, 30) }
 
-result_fname_prefix = 'Rmax/new_Rmax_ll_LGN_only_no_con' #'Rmax_LIF/Rmax_by_type'
+sys_dict['ll1_LIF'] = { 'f_out': '../analysis_intFire4/analysis_ll/Rmax/ll1_Rmax.csv', 'grating_ids': range(7, 240, 30)+range(8, 240, 30)+range(9, 240, 30) }
+sys_dict['ll2_LIF'] = { 'f_out': '../analysis_intFire4/analysis_ll/Rmax/ll2_Rmax.csv', 'grating_ids': range(7, 240, 30)+range(8, 240, 30)+range(9, 240, 30) }
+sys_dict['ll3_LIF'] = { 'f_out': '../analysis_intFire4/analysis_ll/Rmax/ll3_Rmax.csv', 'grating_ids': range(8, 240, 30) }
+
+# result_fname_prefix = 'Rmax/Rmax_bio_ll'
+# result_fname_prefix = 'Rmax/Rmax_lif1_ll'
+result_fname_prefix = 'Rmax/Rmax_lif4_ll'
 result_fig_fname = result_fname_prefix + '.eps'
-
-'''
-# Load simulation data and obtain Rmax for each cell.
-for sys_name in sys_dict.keys():
-    gratings_rates = np.array([])
-    print gratings_rates.shape
-    for grating_id in sys_dict[sys_name]['grating_ids']:
-        rates_tmp = np.array([])
-        for i_trial in xrange(0, N_trials):
-            f_name = '%sg%d_%d%s' % (sys_dict[sys_name]['f_1'], grating_id, i_trial, sys_dict[sys_name]['f_3'])
-            print 'Processing file %s.' % (f_name)
-            tmp = np.genfromtxt(f_name, delimiter=' ')[:, 1] # Assume all files have the same columns of gids; use the 2nd column for rates.
-            if (rates_tmp.size == 0):
-                rates_tmp = tmp
-            else:
-                rates_tmp = rates_tmp + tmp
-        rates_tmp = rates_tmp / (1.0 * N_trials)
-        if (gratings_rates.size == 0):
-            gratings_rates = rates_tmp
-        else:
-            gratings_rates = np.vstack((gratings_rates, rates_tmp))
-    Rmax = np.amax(gratings_rates, axis = 0)
-
-    sys_df = pd.read_csv(sys_dict[sys_name]['cells_file'], sep=' ')
-    # Write Rmax to a file, with gid and cell type information.
-    f_out = open(sys_dict[sys_name]['f_out'], 'w')
-    f_out.write('gid type Rmax\n')
-    for gid in xrange(0, Rmax.size):
-        f_out.write('%d %s %f\n' % (gid, sys_df['type'].ix[gid], Rmax[gid]))
-    f_out.close()
-'''
-
-
-
-
 
 type_color = {'Scnn1a': 'darkorange', 'Rorb': 'red', 'Nr5a1': 'magenta', 'PV1': 'blue', 'PV2': 'cyan', 'AnL4E': 'gray', 'AwL4E': 'gray', 'AnI': 'gray', 'AwI': 'gray'}
 type_order = ['Scnn1a', 'Rorb', 'Nr5a1', 'AnL4E', 'AwL4E', 'PV1', 'PV2', 'AnI', 'AwI']
