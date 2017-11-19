@@ -1,14 +1,10 @@
 import pickle
 import numpy as np
-import matplotlib.pyplot as plt
-
-import scipy.stats as scp_stats
-
-import pandas as pd
-
 import matplotlib
-matplotlib.rcParams.update({'font.size': 15})
-
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import scipy.stats as scp_stats
+import pandas as pd
 
 N_trials = 10
 
@@ -128,5 +124,3 @@ ax.tick_params(size=10)
 plt.savefig(result_fig_fname, format='eps')
 
 plt.show()
-
-
