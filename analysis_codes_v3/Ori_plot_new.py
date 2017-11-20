@@ -1,5 +1,7 @@
 import pickle
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 import scipy.stats as scp_stats
@@ -51,28 +53,31 @@ def box_plot_data(tot_df, label, units, type_order, type_color, y_lim_top, out_f
     plt.show()
 
 
-
+cell_db_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/analysis/'
 # Decide which systems we are doing analysis for.
 sys_dict = {}
-#sys_dict['ll1'] = { 'cells_file': '../build/ll1.csv', 'f_out': 'Ori/ll1_rates.npy', 'f_out_pref': 'Ori/ll1_pref_stat.csv'}
-#sys_dict['ll2'] = { 'cells_file': '../build/ll2.csv', 'f_out': 'Ori/ll2_rates.npy', 'f_out_pref': 'Ori/ll2_pref_stat.csv'}
-#sys_dict['ll3'] = { 'cells_file': '../build/ll3.csv', 'f_out': 'Ori/ll3_rates.npy', 'f_out_pref': 'Ori/ll3_pref_stat.csv'}
+# sys_dict['ll1'] = { 'cells_file': cell_db_path + '../build/ll1.csv', 'f_out': cell_db_path + 'Ori/ll1_rates.npy', 'f_out_pref': cell_db_path + 'Ori/ll1_pref_stat.csv'}
+# sys_dict['ll2'] = { 'cells_file': cell_db_path + '../build/ll2.csv', 'f_out': cell_db_path + 'Ori/ll2_rates.npy', 'f_out_pref': cell_db_path + 'Ori/ll2_pref_stat.csv'}
+# sys_dict['ll3'] = { 'cells_file': cell_db_path + '../build/ll3.csv', 'f_out': cell_db_path + 'Ori/ll3_rates.npy', 'f_out_pref': cell_db_path + 'Ori/ll3_pref_stat.csv'}
+
 #sys_dict['rl1'] = { 'cells_file': '../build/rl1.csv', 'f_out': 'Ori/rl1_rates.npy', 'f_out_pref': 'Ori/rl1_pref_stat.csv'}
 #sys_dict['rl2'] = { 'cells_file': '../build/rl2.csv', 'f_out': 'Ori/rl2_rates.npy', 'f_out_pref': 'Ori/rl2_pref_stat.csv'}
 #sys_dict['rl3'] = { 'cells_file': '../build/rl3.csv', 'f_out': 'Ori/rl3_rates.npy', 'f_out_pref': 'Ori/rl3_pref_stat.csv'}
+
 #sys_dict['lr1'] = { 'cells_file': '../build/lr1.csv', 'f_out': 'Ori/lr1_rates.npy', 'f_out_pref': 'Ori/lr1_pref_stat.csv'}
 #sys_dict['lr2'] = { 'cells_file': '../build/lr2.csv', 'f_out': 'Ori/lr2_rates.npy', 'f_out_pref': 'Ori/lr2_pref_stat.csv'}
 #sys_dict['lr3'] = { 'cells_file': '../build/lr3.csv', 'f_out': 'Ori/lr3_rates.npy', 'f_out_pref': 'Ori/lr3_pref_stat.csv'}
+
 #sys_dict['rr1'] = { 'cells_file': '../build/rr1.csv', 'f_out': 'Ori/rr1_rates.npy', 'f_out_pref': 'Ori/rr1_pref_stat.csv'}
 #sys_dict['rr2'] = { 'cells_file': '../build/rr2.csv', 'f_out': 'Ori/rr2_rates.npy', 'f_out_pref': 'Ori/rr2_pref_stat.csv'}
 #sys_dict['rr3'] = { 'cells_file': '../build/rr3.csv', 'f_out': 'Ori/rr3_rates.npy', 'f_out_pref': 'Ori/rr3_pref_stat.csv'}
+
 #sys_dict['ll2_TF4Hz'] = { 'cells_file': '../build/ll2.csv', 'f_out': 'Ori/ll2_rates_4Hz.npy', 'f_out_pref': 'Ori/ll2_pref_stat_4Hz.csv' }
-sys_dict['ll1_LGN_only_no_con'] = { 'cells_file': '../build/ll1.csv', 'f_out': 'Ori/ll1_LGN_only_no_con_rates.npy', 'f_out_pref': 'Ori/ll1_LGN_only_no_con_pref_stat.csv' }
-sys_dict['ll2_LGN_only_no_con'] = { 'cells_file': '../build/ll2.csv', 'f_out': 'Ori/ll2_LGN_only_no_con_rates.npy', 'f_out_pref': 'Ori/ll2_LGN_only_no_con_pref_stat.csv' }
-sys_dict['ll3_LGN_only_no_con'] = { 'cells_file': '../build/ll3.csv', 'f_out': 'Ori/ll3_LGN_only_no_con_rates.npy', 'f_out_pref': 'Ori/ll3_LGN_only_no_con_pref_stat.csv' }
-#sys_dict['ll1_LIF'] = { 'cells_file': '../build/ll1.csv', 'f_out': 'Ori_LIF/ll1_rates.npy', 'f_out_pref': 'Ori_LIF/ll1_pref_stat.csv'}
-#sys_dict['ll2_LIF'] = { 'cells_file': '../build/ll2.csv', 'f_out': 'Ori_LIF/ll2_rates.npy', 'f_out_pref': 'Ori_LIF/ll2_pref_stat.csv'}
-#sys_dict['ll3_LIF'] = { 'cells_file': '../build/ll3.csv', 'f_out': 'Ori_LIF/ll3_rates.npy', 'f_out_pref': 'Ori_LIF/ll3_pref_stat.csv'}
+
+# sys_dict['ll1_LIF'] = { 'cells_file': cell_db_path + '../build/ll1.csv', 'f_out': '../analysis_intFire1/analysis_ll/Ori/ll1_rates.npy', 'f_out_pref': '../analysis_intFire1/analysis_ll/Ori/ll1_pref_stat.csv'}
+# sys_dict['ll2_LIF'] = { 'cells_file': cell_db_path + '../build/ll2.csv', 'f_out': '../analysis_intFire1/analysis_ll/Ori/ll2_rates.npy', 'f_out_pref': '../analysis_intFire1/analysis_ll/Ori/ll2_pref_stat.csv'}
+# sys_dict['ll3_LIF'] = { 'cells_file': cell_db_path + '../build/ll3.csv', 'f_out': '../analysis_intFire1/analysis_ll/Ori/ll3_rates.npy', 'f_out_pref': '../analysis_intFire1/analysis_ll/Ori/ll3_pref_stat.csv'}
+
 #sys_dict['rl1_LIF'] = { 'cells_file': '../build/rl1.csv', 'f_out': 'Ori_LIF/rl1_rates.npy', 'f_out_pref': 'Ori_LIF/rl1_pref_stat.csv'}
 #sys_dict['rl2_LIF'] = { 'cells_file': '../build/rl2.csv', 'f_out': 'Ori_LIF/rl2_rates.npy', 'f_out_pref': 'Ori_LIF/rl2_pref_stat.csv'}
 #sys_dict['rl3_LIF'] = { 'cells_file': '../build/rl3.csv', 'f_out': 'Ori_LIF/rl3_rates.npy', 'f_out_pref': 'Ori_LIF/rl3_pref_stat.csv'}
@@ -84,8 +89,13 @@ sys_dict['ll3_LGN_only_no_con'] = { 'cells_file': '../build/ll3.csv', 'f_out': '
 #sys_dict['rr3_LIF'] = { 'cells_file': '../build/rr3.csv', 'f_out': 'Ori_LIF/rr3_rates.npy', 'f_out_pref': 'Ori_LIF/rr3_pref_stat.csv'}
 
 
+sys_dict['ll1_LIF'] = { 'cells_file': cell_db_path + '../build/ll1.csv', 'f_out': '../analysis_intFire4/analysis_ll/Ori/ll1_rates.npy', 'f_out_pref': '../analysis_intFire4/analysis_ll/Ori/ll1_pref_stat.csv'}
+sys_dict['ll2_LIF'] = { 'cells_file': cell_db_path + '../build/ll2.csv', 'f_out': '../analysis_intFire4/analysis_ll/Ori/ll2_rates.npy', 'f_out_pref': '../analysis_intFire4/analysis_ll/Ori/ll2_pref_stat.csv'}
+sys_dict['ll3_LIF'] = { 'cells_file': cell_db_path + '../build/ll3.csv', 'f_out': '../analysis_intFire4/analysis_ll/Ori/ll3_rates.npy', 'f_out_pref': '../analysis_intFire4/analysis_ll/Ori/ll3_pref_stat.csv'}
 
-result_fig_prefix = 'Ori/new_Ori_ll_LGN_only_no_con'
+# result_fig_prefix = 'Ori/new_Ori_bio_ll'
+# result_fig_prefix = 'Ori/new_Ori_lif1_ll'
+result_fig_prefix = 'Ori/new_Ori_lif4_ll'
 result_fig_CV_ori = result_fig_prefix + '_CV_ori.eps'
 result_fig_DSI = result_fig_prefix + '_DSI.eps'
 
@@ -148,5 +158,3 @@ units = ''
 y_lim_top = 1.0
 out_fig_name = result_fig_DSI
 box_plot_data(tot_df, label, units, type_order, type_color, y_lim_top, out_fig_name)
-
-
