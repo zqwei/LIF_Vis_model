@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import json
 import linecache
@@ -138,9 +140,9 @@ def compute_i_amplification(sim_config, syn_data_path, tar_gids, N_tar_gid_per_c
     return w_df
 
 
-#sim_config = '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/simulation_ll2/config_ll2_g8_0_sdlif_z101.json'
-#syn_data_path = '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/syn_data_lif_z101.json'
-#output_spk_file = '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/simulation_ll2/output_ll2_g8_0_sdlif_z101/spk.dat'
+#sim_config = '/allen/aibs/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/simulation_ll2/config_ll2_g8_0_sdlif_z101.json'
+#syn_data_path = '/allen/aibs/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/syn_data_lif_z101.json'
+#output_spk_file = '/allen/aibs/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/simulation_ll2/output_ll2_g8_0_sdlif_z101/spk.dat'
 #tar_gids = [2, 1002, 2002, 3002, 4002, 5002, 6002, 7002, 8002, 9002]
 #N_tar_gid_per_con_file = 100
 #type_syn_matrix = { 'Scnn1a': 'exc', 'Rorb': 'exc', 'Nr5a1': 'exc', 'LIF_exc': 'exc', 'PV1': 'inh', 'PV2': 'inh', 'LIF_inh': 'inh'}
@@ -218,81 +220,155 @@ sim_process_param = {   'N_tar_gid_per_con_file': 100,
                         'dt': 10.0
                     }
 sys_dict = {}
+# sys_dict['ll1_2Hz'] = {    'sys_name': 'll1',
+#                   'dir': '../analysis_intFire1/simulation_ll1/',
+#                   'f_label': 'sdlif_z101',
+#                   'SF': 0.05,
+#                   'TF': 2.0,
+#                   'gratings_metadata': '/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
+#                   'N_trial': 10,
+#                   'syn_data': '/allen/aibs/mat/ZiqiangW/simulation_results/simulation_ll_final_syn_data_lif_z102/syn_data_lif_z101.json',
+#                   'f_gratings_pref': '../analysis_intFire1/analysis_ll/Ori/ll1_pref_stat.csv',
+#                   'syn_mode': 'L',
+#                   'f_out': 'i_amplification_LIF/i_amplification_ll1_2Hz.csv'
+#              }
+# sys_dict['ll2_2Hz'] = {    'sys_name': 'll2',
+#                   'dir': '../analysis_intFire1/simulation_ll2/',
+#                   'f_label': 'sdlif_z101',
+#                   'SF': 0.05,
+#                   'TF': 2.0,
+#                   'gratings_metadata': '/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
+#                   'N_trial': 10,
+#                   'syn_data': '/allen/aibs/mat/ZiqiangW/simulation_results/simulation_ll_final_syn_data_lif_z102/syn_data_lif_z101.json',
+#                   'f_gratings_pref': '../analysis_intFire1/analysis_ll/Ori/ll2_pref_stat.csv',
+#                   'syn_mode': 'L',
+#                   'f_out': 'i_amplification_LIF/i_amplification_ll2_2Hz.csv'
+#              }
+# sys_dict['ll3_2Hz'] = {    'sys_name': 'll3',
+#                   'dir': '../analysis_intFire1/simulation_ll3/',
+#                   'f_label': 'sdlif_z101',
+#                   'SF': 0.05,
+#                   'TF': 2.0,
+#                   'gratings_metadata': '/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
+#                   'N_trial': 10,
+#                   'syn_data': '/allen/aibs/mat/ZiqiangW/simulation_results/simulation_ll_final_syn_data_lif_z102/syn_data_lif_z101.json',
+#                   'f_gratings_pref': '../analysis_intFire1/analysis_ll/Ori/ll3_pref_stat.csv',
+#                   'syn_mode': 'L',
+#                   'f_out': 'i_amplification_LIF/i_amplification_ll3_2Hz.csv'
+#              }
+# sys_dict['ll1_4Hz'] = {    'sys_name': 'll1',
+#                   'dir': '../analysis_intFire1/simulation_ll1/',
+#                   'f_label': 'sdlif_z101',
+#                   'SF': 0.05,
+#                   'TF': 4.0,
+#                   'gratings_metadata': '/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
+#                   'N_trial': 10,
+#                   'syn_data': '/allen/aibs/mat/ZiqiangW/simulation_results/simulation_ll_final_syn_data_lif_z102/syn_data_lif_z101.json',
+#                   'f_gratings_pref': '../analysis_intFire1/analysis_ll/Ori/ll1_pref_stat.csv',
+#                   'syn_mode': 'L',
+#                   'f_out': 'i_amplification_LIF/i_amplification_ll1_4Hz.csv'
+#              }
+# sys_dict['ll2_4Hz'] = {    'sys_name': 'll2',
+#                   'dir': '../analysis_intFire1/simulation_ll2/',
+#                   'f_label': 'sdlif_z101',
+#                   'SF': 0.05,
+#                   'TF': 4.0,
+#                   'gratings_metadata': '/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
+#                   'N_trial': 10,
+#                   'syn_data': '/allen/aibs/mat/ZiqiangW/simulation_results/simulation_ll_final_syn_data_lif_z102/syn_data_lif_z101.json',
+#                   'f_gratings_pref': '../analysis_intFire1/analysis_ll/Ori/ll2_pref_stat.csv',
+#                   'syn_mode': 'L',
+#                   'f_out': 'i_amplification_LIF/i_amplification_ll2_4Hz.csv'
+#              }
+# sys_dict['ll3_4Hz'] = {    'sys_name': 'll3',
+#                   'dir': '../analysis_intFire1/simulation_ll3/',
+#                   'f_label': 'sdlif_z101',
+#                   'SF': 0.05,
+#                   'TF': 4.0,
+#                   'gratings_metadata': '/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
+#                   'N_trial': 10,
+#                   'syn_data': '/allen/aibs/mat/ZiqiangW/simulation_results/simulation_ll_final_syn_data_lif_z102/syn_data_lif_z101.json',
+#                   'f_gratings_pref': '../analysis_intFire1/analysis_ll/Ori/ll3_pref_stat.csv',
+#                   'syn_mode': 'L',
+#                   'f_out': 'i_amplification_LIF/i_amplification_ll3_4Hz.csv'
+#              }
+
+
 sys_dict['ll1_2Hz'] = {    'sys_name': 'll1',
-                  'dir': '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/simulation_ll1/',
+                  'dir': '../analysis_intFire4/simulation_ll1/',
                   'f_label': 'sdlif_z101',
                   'SF': 0.05,
                   'TF': 2.0,
-                  'gratings_metadata': '/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
+                  'gratings_metadata': '/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
                   'N_trial': 10,
-                  'syn_data': '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/syn_data_lif_z101.json',
-                  'f_gratings_pref': 'Ori_LIF/ll1_pref_stat.csv',
+                  'syn_data': '/allen/aibs/mat/ZiqiangW/simulation_results/simulation_ll_final_syn_data_intFire4/bio2lif_model_intFire4_ll/syn_data_lif_z101.json',
+                  'f_gratings_pref': '../analysis_intFire4/analysis_ll/Ori/ll1_pref_stat.csv',
                   'syn_mode': 'L',
                   'f_out': 'i_amplification_LIF/i_amplification_ll1_2Hz.csv'
              }
 sys_dict['ll2_2Hz'] = {    'sys_name': 'll2',
-                  'dir': '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/simulation_ll2/',
+                  'dir': '../analysis_intFire4/simulation_ll2/',
                   'f_label': 'sdlif_z101',
                   'SF': 0.05,
                   'TF': 2.0,
-                  'gratings_metadata': '/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
+                  'gratings_metadata': '/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
                   'N_trial': 10,
-                  'syn_data': '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/syn_data_lif_z101.json',
-                  'f_gratings_pref': 'Ori_LIF/ll2_pref_stat.csv',
+                  'syn_data': '/allen/aibs/mat/ZiqiangW/simulation_results/simulation_ll_final_syn_data_intFire4/bio2lif_model_intFire4_ll/syn_data_lif_z101.json',
+                  'f_gratings_pref': '../analysis_intFire4/analysis_ll/Ori/ll2_pref_stat.csv',
                   'syn_mode': 'L',
                   'f_out': 'i_amplification_LIF/i_amplification_ll2_2Hz.csv'
              }
 sys_dict['ll3_2Hz'] = {    'sys_name': 'll3',
-                  'dir': '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/simulation_ll3/',
+                  'dir': '../analysis_intFire4/simulation_ll3/',
                   'f_label': 'sdlif_z101',
                   'SF': 0.05,
                   'TF': 2.0,
-                  'gratings_metadata': '/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
+                  'gratings_metadata': '/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
                   'N_trial': 10,
-                  'syn_data': '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/syn_data_lif_z101.json',
-                  'f_gratings_pref': 'Ori_LIF/ll3_pref_stat.csv',
+                  'syn_data': '/allen/aibs/mat/ZiqiangW/simulation_results/simulation_ll_final_syn_data_intFire4/bio2lif_model_intFire4_ll/syn_data_lif_z101.json',
+                  'f_gratings_pref': '../analysis_intFire4/analysis_ll/Ori/ll3_pref_stat.csv',
                   'syn_mode': 'L',
                   'f_out': 'i_amplification_LIF/i_amplification_ll3_2Hz.csv'
              }
 sys_dict['ll1_4Hz'] = {    'sys_name': 'll1',
-                  'dir': '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/simulation_ll1/',
+                  'dir': '../analysis_intFire4/simulation_ll1/',
                   'f_label': 'sdlif_z101',
                   'SF': 0.05,
                   'TF': 4.0,
-                  'gratings_metadata': '/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
+                  'gratings_metadata': '/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
                   'N_trial': 10,
-                  'syn_data': '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/syn_data_lif_z101.json',
-                  'f_gratings_pref': 'Ori_LIF/ll1_pref_stat.csv',
+                  'syn_data': '/allen/aibs/mat/ZiqiangW/simulation_results/simulation_ll_final_syn_data_intFire4/bio2lif_model_intFire4_ll/syn_data_lif_z101.json',
+                  'f_gratings_pref': '../analysis_intFire4/analysis_ll/Ori/ll1_pref_stat.csv',
                   'syn_mode': 'L',
                   'f_out': 'i_amplification_LIF/i_amplification_ll1_4Hz.csv'
              }
 sys_dict['ll2_4Hz'] = {    'sys_name': 'll2',
-                  'dir': '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/simulation_ll2/',
+                  'dir': '../analysis_intFire4/simulation_ll2/',
                   'f_label': 'sdlif_z101',
                   'SF': 0.05,
                   'TF': 4.0,
-                  'gratings_metadata': '/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
+                  'gratings_metadata': '/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
                   'N_trial': 10,
-                  'syn_data': '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/syn_data_lif_z101.json',
-                  'f_gratings_pref': 'Ori_LIF/ll2_pref_stat.csv',
+                  'syn_data': '/allen/aibs/mat/ZiqiangW/simulation_results/simulation_ll_final_syn_data_intFire4/bio2lif_model_intFire4_ll/syn_data_lif_z101.json',
+                  'f_gratings_pref': '../analysis_intFire4/analysis_ll/Ori/ll2_pref_stat.csv',
                   'syn_mode': 'L',
                   'f_out': 'i_amplification_LIF/i_amplification_ll2_4Hz.csv'
              }
 sys_dict['ll3_4Hz'] = {    'sys_name': 'll3',
-                  'dir': '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/simulation_ll3/',
+                  'dir': '../analysis_intFire4/simulation_ll3/',
                   'f_label': 'sdlif_z101',
                   'SF': 0.05,
                   'TF': 4.0,
-                  'gratings_metadata': '/data/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
+                  'gratings_metadata': '/allen/aibs/mat/antona/network/14-simulations/6-LGN_firing_rates_and_spikes/LGN_spike_trains/movies_gratings/res_192_metadata.txt',
                   'N_trial': 10,
-                  'syn_data': '/data/mat/ZiqiangW/simulation_ll_final_syn_data_lif_z102/syn_data_lif_z101.json',
-                  'f_gratings_pref': 'Ori_LIF/ll3_pref_stat.csv',
+                  'syn_data': '/allen/aibs/mat/ZiqiangW/simulation_results/simulation_ll_final_syn_data_intFire4/bio2lif_model_intFire4_ll/syn_data_lif_z101.json',
+                  'f_gratings_pref': '../analysis_intFire4/analysis_ll/Ori/ll3_pref_stat.csv',
                   'syn_mode': 'L',
                   'f_out': 'i_amplification_LIF/i_amplification_ll3_4Hz.csv'
              }
 
-#for sys in sys_dict:
-#    run_i_amp_LIF_grating_ori(gids, sys_dict[sys], sim_process_param)
+for sys in sys_dict:
+   run_i_amp_LIF_grating_ori(gids, sys_dict[sys], sim_process_param)
 
 
 
@@ -331,5 +407,3 @@ for ax in axes:
     ax.legend()
 plt.savefig('i_amplification_LIF/i_amplification_LIF.eps', format='eps')
 plt.show()
-
-
