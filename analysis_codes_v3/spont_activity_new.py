@@ -15,18 +15,46 @@ type_order = ['Scnn1a', 'Rorb', 'Nr5a1', 'Exp.E.', 'PV1', 'PV2', 'Exp.I.']
 
 # Decide which systems we are doing analysis for.
 sys_dict = {}
-sys_dict['ll1'] = { 'f_out': '/allen/aibs/mat/antona/network/14-simulations/9-network/analysis/spont_activity/ll1_spont.csv', 'types': [] }
-sys_dict['ll2'] = { 'f_out': '/allen/aibs/mat/antona/network/14-simulations/9-network/analysis/spont_activity/ll2_spont.csv', 'types': [] }
-sys_dict['ll3'] = { 'f_out': '/allen/aibs/mat/antona/network/14-simulations/9-network/analysis/spont_activity/ll3_spont.csv', 'types': [] }
-#sys_dict['rr2'] = { 'cells_file': '../build/rr2.csv', 'f_1': '../output_rr2_spont_', 'f_2': '_sd282_cn0/spk.dat', 'f_3': '_sd282_cn0/tot_f_rate.dat', 'f_out': 'spont_activity/rr2_spont.csv', 'types': [] }
-# sys_dict['ll1_LIF'] = { 'f_out': '../analysis_intFire1/analysis_ll/spont_activity/ll1_spont.csv', 'types': [] }
-# sys_dict['ll2_LIF'] = { 'f_out': '../analysis_intFire1/analysis_ll/spont_activity/ll2_spont.csv', 'types': [] }
-# sys_dict['ll3_LIF'] = { 'f_out': '../analysis_intFire1/analysis_ll/spont_activity/ll3_spont.csv', 'types': [] }
+# sys_dict['ll1'] = { 'f_out': '/allen/aibs/mat/antona/network/14-simulations/9-network/analysis/spont_activity/ll1_spont.csv', 'types': [] }
+# sys_dict['ll2'] = { 'f_out': '/allen/aibs/mat/antona/network/14-simulations/9-network/analysis/spont_activity/ll2_spont.csv', 'types': [] }
+# sys_dict['ll3'] = { 'f_out': '/allen/aibs/mat/antona/network/14-simulations/9-network/analysis/spont_activity/ll3_spont.csv', 'types': [] }
+
+cell_db_path = '/allen/aibs/mat/antona/network/14-simulations/9-network/build/'
+# file_db_path = '../analysis_intFire1/'
+#
+# sys_dict['ll1_LIF'] = { 'cells_file': cell_db_path + 'll1.csv', 'f_1': file_db_path + 'simulation_ll1/output_ll1_spont_', 'f_2': '_sdlif_z101/spk.dat', 'f_3': '_sdlif_z101/tot_f_rate.dat', 'f_out': 'spont_activity/lif1_ll1_spont.csv', 'types': [] }
+# sys_dict['ll2_LIF'] = { 'cells_file': cell_db_path + 'll2.csv', 'f_1': file_db_path + 'simulation_ll2/output_ll2_spont_', 'f_2': '_sdlif_z101/spk.dat', 'f_3': '_sdlif_z101/tot_f_rate.dat', 'f_out': 'spont_activity/lif1_ll2_spont.csv', 'types': [] }
+# sys_dict['ll3_LIF'] = { 'cells_file': cell_db_path + 'll3.csv', 'f_1': file_db_path + 'simulation_ll3/output_ll3_spont_', 'f_2': '_sdlif_z101/spk.dat', 'f_3': '_sdlif_z101/tot_f_rate.dat', 'f_out': 'spont_activity/lif1_ll3_spont.csv', 'types': [] }
+
+file_db_path = '../analysis_intFire4/'
+
+sys_dict['ll1_LIF'] = { 'cells_file': cell_db_path + 'll1.csv', 'f_1': file_db_path + 'simulation_ll1/output_ll1_spont_', 'f_2': '_sdlif_z101/spk.dat', 'f_3': '_sdlif_z101/tot_f_rate.dat', 'f_out': 'spont_activity/lif4_ll1_spont.csv', 'types': [] }
+sys_dict['ll2_LIF'] = { 'cells_file': cell_db_path + 'll2.csv', 'f_1': file_db_path + 'simulation_ll2/output_ll2_spont_', 'f_2': '_sdlif_z101/spk.dat', 'f_3': '_sdlif_z101/tot_f_rate.dat', 'f_out': 'spont_activity/lif4_ll2_spont.csv', 'types': [] }
+sys_dict['ll3_LIF'] = { 'cells_file': cell_db_path + 'll3.csv', 'f_1': file_db_path + 'simulation_ll3/output_ll3_spont_', 'f_2': '_sdlif_z101/spk.dat', 'f_3': '_sdlif_z101/tot_f_rate.dat', 'f_out': 'spont_activity/lif4_ll3_spont.csv', 'types': [] }
 
 
-result_fname_prefix = 'spont_activity/new_av_spont_rates_by_type_bio_ll'
-# result_fname_prefix = 'spont_activity_LIF/new_av_spont_rates_by_type'
+# result_fname_prefix = 'spont_activity/new_av_spont_rates_by_type_bio_ll'
+# result_fname_prefix = 'spont_activity/new_av_spont_rates_by_type_lif1_ll'
+result_fname_prefix = 'spont_activity/new_av_spont_rates_by_type_lif4_ll'
 result_fig_fname = result_fname_prefix + '.eps'
+
+# Read files containing firing rates for each trial, average over all trials, and save to file.
+for i_sys, sys_name in enumerate(sys_dict.keys()):
+    # Obtain information about cell types.
+    cells  = pd.read_csv(sys_dict[sys_name]['cells_file'], sep=' ')
+    gids = cells['index'].values
+    out_df = pd.DataFrame({'gid': gids, 'type': cells['type'].values})
+
+    # Process the firing rate files.
+    rates = np.zeros(gids.size)
+    for i_trial in xrange(0, N_trials):
+        f_name = '%s%d%s' % (sys_dict[sys_name]['f_1'], i_trial, sys_dict[sys_name]['f_3'])
+        print 'Processing file %s.' % (f_name)
+        tmp_rates = np.genfromtxt(f_name, delimiter=' ')[:, 1] # Assume all files have the same columns of gids; use the 2nd column for rates.
+        rates += tmp_rates
+    rates = rates / (1.0 * N_trials)
+    out_df['%s_frate' % (sys_name)] = rates
+    out_df.to_csv(sys_dict[sys_name]['f_out'], sep=' ', index=False)
 
 # Read files with firing rate averages over trials for simulations.
 rates_df = pd.DataFrame()
