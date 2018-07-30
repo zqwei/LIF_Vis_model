@@ -15,8 +15,7 @@ Details of the project is described in Wiki page (https://github.com/zqwei/LIF_V
 This code is the product of work carried out with Anton Arkhipov in Allen Institute Brain Science, where the simulations were
 implemented. If you find our code helpful to your work, consider giving us a shout-out in your publications:
 
-* Paper #1
-* Paper #2
+* [Arkhipov et al., 2018](https://www.biorxiv.org/content/early/2018/03/31/292839), **Visual physiology of the Layer 4 cortical circuit in silico**
 
 ## License
 
