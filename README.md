@@ -10,7 +10,7 @@ The original code of biophysical model simulation was created by Anton Arkhipov
 
 Details of the project is described in Wiki page (https://github.com/zqwei/LIF_Vis_model/wiki).
 
-See also the related repo (https://github.com/AllenInstitute/arkhipov2018_layer4)[https://github.com/AllenInstitute/arkhipov2018_layer4].
+See also the related [repo](https://github.com/AllenInstitute/arkhipov2018_layer4).
 
 ## Citation
 
