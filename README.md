@@ -19,6 +19,9 @@ implemented. If you find our code helpful to your work, consider giving us a sho
 
 * [Arkhipov et al., 2018](https://www.biorxiv.org/content/early/2018/03/31/292839), **Visual physiology of the Layer 4 cortical circuit in silico**
 
+### Related repos
+* https://github.com/AllenInstitute/arkhipov2018_layer4
+
 ## License
 
 MIT License
